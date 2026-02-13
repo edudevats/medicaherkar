@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especialidades | Herkar</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    {% include 'partials/_header.html' %}
+
+    <div style="background: var(--primary-color); padding: 4rem 0; color: white; text-align: center;">
+        <h1 style="color: white; margin: 0;">Nuestras Especialidades</h1>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            <div class="services-grid" style="grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));">
+
+                <div class="service-card">
+                    <div class="service-icon">🔬</div>
+                    <h3 class="service-title">Urología</h3>
+                    <p class="service-desc">Diagnóstico y tratamiento de enfermedades del sistema urinario.
+                        Procedimientos comunes:</p>
+                    <ul style="text-align: left; margin-top: 1rem; color: var(--text-light); padding-left: 1.5rem;">
+                        <li>Resección transuretral de próstata</li>
+                        <li>Vasectomía sin bisturí</li>
+                        <li>Tratamiento de varicocele</li>
+                        <li>Litotricia (cálculos renales)</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3 class="service-title">Cirugía Plástica y Reconstructiva</h3>
+                    <p class="service-desc">Procedimientos estéticos realizados por cirujanos certificados.</p>
+                    <ul style="text-align: left; margin-top: 1rem; color: var(--text-light); padding-left: 1.5rem;">
+                        <li>Blefaroplastia (párpados)</li>
+                        <li>Liposucción y Lipoescultura</li>
+                        <li>Implantes mamarios</li>
+                        <li>Abdominoplastia</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">👂</div>
+                    <h3 class="service-title">Otorrenolaringología</h3>
+                    <p class="service-desc">Atención de padecimientos de oído, nariz y garganta.</p>
+                    <ul style="text-align: left; margin-top: 1rem; color: var(--text-light); padding-left: 1.5rem;">
+                        <li>Rinoplastia funcional y estética</li>
+                        <li>Amigdalectomía</li>
+                        <li>Cirugía de cornetes</li>
+                        <li>Septoplastia</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🏥</div>
+                    <h3 class="service-title">Cirugía General</h3>
+                    <p class="service-desc">Intervenciones quirúrgicas de corta estancia.</p>
+                    <ul style="text-align: left; margin-top: 1rem; color: var(--text-light); padding-left: 1.5rem;">
+                        <li>Hernias (inguinal, umbilical, hiatal)</li>
+                        <li>Colecistectomía (vesícula)</li>
+                        <li>Apendicetomía laparoscópica</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🦴</div>
+                    <h3 class="service-title">Ortopedia</h3>
+                    <p class="service-desc">Tratamiento de lesiones musculoesqueléticas.</p>
+                    <ul style="text-align: left; margin-top: 1rem; color: var(--text-light); padding-left: 1.5rem;">
+                        <li>Artroscopia de rodilla y hombro</li>
+                        <li>Cirugía de mano</li>
+                        <li>Tratamiento de fracturas menores</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💊</div>
+                    <h3 class="service-title">Ginecología</h3>
+                    <p class="service-desc">Salud integral de la mujer.</p>
+                    <ul style="text-align: left; margin-top: 1rem; color: var(--text-light); padding-left: 1.5rem;">
+                        <li>Histerectomía laparoscópica</li>
+                        <li>Quistes ováricos</li>
+                        <li>Laparoscopia diagnóstica</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 class="footer-title">Herkar</h3>
+                    <p style="color: #aaaaaa; font-size: 0.9rem;">Excelencia médica al alcance de todos.</p>
+                </div>
+                <div>
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'core:nosotros' %}">Nosotros</a></li>
+                        <li><a href="{% url 'core:instalaciones' %}">Instalaciones</a></li>
+                        <li><a href="#">Aviso de Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">&copy; 2024 Herkar. Todos los derechos reservados.</div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

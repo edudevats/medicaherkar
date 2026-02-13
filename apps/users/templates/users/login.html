@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Iniciar Sesion | Clinica HerKar{% endblock %}
+
+{% block content %}
+<div style="background: var(--primary-color); padding: 4rem 0; color: white; text-align: center;">
+    <h1 style="color: white; margin: 0;">Iniciar Sesion</h1>
+</div>
+
+<section class="section">
+    <div class="container" style="max-width: 500px;">
+        <div style="background: var(--bg-light); padding: 2rem; border-radius: 8px;">
+            <form method="post">
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                <div style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
+                    {% for error in form.non_field_errors %}
+                    <p style="margin: 0;">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div style="margin-bottom: 1rem;">
+                    <label for="{{ form.username.id_for_label }}" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+                        Correo electronico
+                    </label>
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                    <small style="color: #dc3545;">{{ form.username.errors.0 }}</small>
+                    {% endif %}
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <label for="{{ form.password.id_for_label }}" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+                        Contrasena
+                    </label>
+                    {{ form.password }}
+                    {% if form.password.errors %}
+                    <small style="color: #dc3545;">{{ form.password.errors.0 }}</small>
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; border: none; cursor: pointer;">
+                    Iniciar Sesion
+                </button>
+            </form>
+
+            <div style="text-align: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                <p style="color: var(--text-light);">No tienes cuenta?</p>
+                <a href="{% url 'users:registro' %}" style="color: var(--primary-color); font-weight: 600;">
+                    Registrate como paciente
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

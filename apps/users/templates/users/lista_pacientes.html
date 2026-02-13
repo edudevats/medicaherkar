@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Gestion de Pacientes | Clinica HerKar{% endblock %}
+
+{% block content %}
+<div style="background: var(--primary-color); padding: 4rem 0; color: white; text-align: center;">
+    <h1 style="color: white; margin: 0;">Gestion de Pacientes</h1>
+</div>
+
+<section class="section">
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <h2 class="section-title" style="margin: 0;">Pacientes Registrados ({{ pacientes|length }})</h2>
+        </div>
+
+        {% if pacientes %}
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; background: white;">
+                <thead>
+                    <tr style="background: var(--primary-color); color: white;">
+                        <th style="padding: 1rem; text-align: left;">Nombre</th>
+                        <th style="padding: 1rem; text-align: left;">Email</th>
+                        <th style="padding: 1rem; text-align: left;">Telefono</th>
+                        <th style="padding: 1rem; text-align: left;">Tipo Sangre</th>
+                        <th style="padding: 1rem; text-align: center;">Fecha Registro</th>
+                        <th style="padding: 1rem; text-align: center;">Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for paciente in pacientes %}
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                        <td style="padding: 1rem;">{{ paciente.get_full_name }}</td>
+                        <td style="padding: 1rem;">{{ paciente.email }}</td>
+                        <td style="padding: 1rem;">{{ paciente.telefono|default:"-" }}</td>
+                        <td style="padding: 1rem;">
+                            {% if paciente.perfil_paciente %}
+                            {{ paciente.perfil_paciente.tipo_sangre|default:"-" }}
+                            {% else %}
+                            -
+                            {% endif %}
+                        </td>
+                        <td style="padding: 1rem; text-align: center;">{{ paciente.fecha_registro|date:"d/m/Y" }}</td>
+                        <td style="padding: 1rem; text-align: center;">
+                            {% if paciente.is_active %}
+                            <span style="background: #d4edda; color: #155724; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.85rem;">Activo</span>
+                            {% else %}
+                            <span style="background: #f8d7da; color: #721c24; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.85rem;">Inactivo</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div style="text-align: center; padding: 3rem; background: var(--bg-light); border-radius: 8px;">
+            <p style="color: var(--text-light);">No hay pacientes registrados.</p>
+        </div>
+        {% endif %}
+
+        <div style="margin-top: 2rem;">
+            <a href="{% url 'users:dashboard' %}" style="color: var(--primary-color);">&larr; Volver al panel</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

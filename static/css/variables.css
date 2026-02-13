@@ -1,0 +1,31 @@
+:root {
+    /* Colors - Extracted from HerKar Logo */
+    --primary-color: #5DBCAA;
+    /* Teal from Logo */
+    --secondary-color: #4AA396;
+    /* Darker Teal for contrast */
+    --accent-color: #7BD0C1;
+    /* Lighter Teal */
+    --text-color: #4a4a4a;
+    /* Softer Dark Grey */
+    --text-light: #808080;
+    /* Gray from Logo */
+    --bg-light: #F0F9F7;
+    /* Very faint teal background */
+    --bg-white: #ffffff;
+    --border-color: #e0e0e0;
+
+    /* Spacing */
+    --container-width: 1200px;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 4rem;
+
+    /* Typography */
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+
+    /* Transitions */
+    --transition-speed: 0.3s;
+}

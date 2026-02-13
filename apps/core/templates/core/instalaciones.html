@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Instalaciones | Clinica HerKar{% endblock %}
+
+{% block content %}
+<div style="background: var(--primary-color); padding: 4rem 0; color: white; text-align: center;">
+    <h1 style="color: white; margin: 0;">Nuestras Instalaciones</h1>
+</div>
+
+<section class="section">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-img-wrapper">
+                <img src="{% static 'images/hero.png' %}" alt="Quirofano 1" class="about-img">
+            </div>
+            <div class="about-content">
+                <h2 class="section-title" style="text-align: left; margin-left: 0;">Quirofanos de Vanguardia</h2>
+                <p>Contamos con 3 quirofanos equipados con la mas alta tecnologia para procedimientos de corta
+                    estancia.</p>
+                <p>Nuestros equipos incluyen monitores de signos vitales de ultima generacion, maquinas de anestesia
+                    de precision y sistemas de iluminacion LED para garantizar la mejor visibilidad durante las
+                    intervenciones.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-bg">
+    <div class="container">
+        <div class="about-grid" style="direction: rtl;">
+            <div class="about-img-wrapper">
+                <img src="{% static 'images/recovery.png' %}" alt="Recuperacion" class="about-img">
+            </div>
+            <div class="about-content" style="direction: ltr;">
+                <h2 class="section-title" style="text-align: left; margin-left: 0;">Areas de Recuperacion</h2>
+                <p>Disenadas para el confort y tranquilidad de nuestros pacientes. Cada cubiculo de recuperacion
+                    cuenta con monitoreo constante y privacidad.</p>
+                <p>Todo el ambiente esta pensado para reducir el estres y favorecer una rapida recuperacion
+                    post-operatoria.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

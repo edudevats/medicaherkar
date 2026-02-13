@@ -1,0 +1,108 @@
+{% extends 'admin/base_site.html' %}
+{% load static %}
+
+{% block breadcrumb_items %}
+<a href="{% url 'admin:index' %}" style="color: var(--primary-color);">Inicio</a>
+<span style="margin: 0 0.5rem;">&rsaquo;</span>
+<span>{{ cl.opts.verbose_name_plural|capfirst }}</span>
+{% endblock %}
+
+{% block admin_content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+    <h2 class="section-title" style="margin: 0;">{{ cl.opts.verbose_name_plural|capfirst }}</h2>
+    {% if has_add_permission %}
+    <a href="{% url cl.opts|admin_urlname:'add' %}" class="btn">+ Agregar {{ cl.opts.verbose_name }}</a>
+    {% endif %}
+</div>
+
+<!-- Filtros -->
+{% if cl.has_filters %}
+<div style="background: var(--bg-light); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+    <strong>Filtros:</strong>
+    {% for spec in cl.filter_specs %}
+    <span style="margin-left: 1rem;">{{ spec.title }}:</span>
+    {% for choice in spec.choices %}
+    <a href="{{ choice.query_string }}"
+       style="margin-left: 0.5rem; color: {% if choice.selected %}var(--primary-color); font-weight: bold;{% else %}var(--text-light);{% endif %}">
+        {{ choice.display }}
+    </a>
+    {% endfor %}
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- Busqueda -->
+{% if cl.search_fields %}
+<div style="margin-bottom: 1.5rem;">
+    <form method="get" style="display: flex; gap: 0.5rem;">
+        <input type="text" name="q" value="{{ cl.query }}"
+               placeholder="Buscar..."
+               style="flex: 1; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 4px;">
+        <button type="submit" class="btn">Buscar</button>
+        {% if cl.query %}
+        <a href="?" class="btn" style="background: var(--secondary-color);">Limpiar</a>
+        {% endif %}
+    </form>
+</div>
+{% endif %}
+
+<!-- Tabla de resultados -->
+{% if cl.result_count %}
+<div style="overflow-x: auto;">
+    <form method="post" id="changelist-form">
+        {% csrf_token %}
+        <table style="width: 100%; border-collapse: collapse; background: white;">
+            <thead>
+                <tr style="background: var(--primary-color); color: white;">
+                    {% if cl.list_display_links %}
+                    {% for field in cl.list_display %}
+                    <th style="padding: 1rem; text-align: left;">
+                        {% if field == 'action_checkbox' %}
+                        <input type="checkbox" id="action-toggle">
+                        {% else %}
+                        {{ field|capfirst }}
+                        {% endif %}
+                    </th>
+                    {% endfor %}
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in cl.result_list %}
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                    {% for item in result %}
+                    <td style="padding: 0.75rem 1rem;">{{ item }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Acciones -->
+        {% if cl.model_admin.actions %}
+        <div style="margin-top: 1rem; padding: 1rem; background: var(--bg-light); border-radius: 4px;">
+            <label>Accion: </label>
+            <select name="action" style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px;">
+                <option value="">---------</option>
+                {% for action in cl.model_admin.actions %}
+                <option value="{{ action.0 }}">{{ action.1 }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn" style="margin-left: 0.5rem;">Ejecutar</button>
+        </div>
+        {% endif %}
+    </form>
+</div>
+
+<p style="margin-top: 1rem; color: var(--text-light);">
+    {{ cl.result_count }} {{ cl.opts.verbose_name_plural }}
+</p>
+{% else %}
+<div style="text-align: center; padding: 3rem; background: var(--bg-light); border-radius: 8px;">
+    <p style="color: var(--text-light); margin-bottom: 1rem;">No hay {{ cl.opts.verbose_name_plural }} registrados.</p>
+    {% if has_add_permission %}
+    <a href="{% url cl.opts|admin_urlname:'add' %}" class="btn">Agregar {{ cl.opts.verbose_name }}</a>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}

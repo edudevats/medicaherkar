@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ medico.get_full_name }} | Clinica HerKar{% endblock %}
+
+{% block content %}
+<div style="background: var(--primary-color); padding: 4rem 0; color: white; text-align: center;">
+    <h1 style="color: white; margin: 0;">Dr. {{ medico.get_full_name }}</h1>
+    {% if medico.perfil_medico %}
+    <p style="margin-top: 0.5rem; opacity: 0.9;">{{ medico.perfil_medico.especialidad }}</p>
+    {% endif %}
+</div>
+
+<section class="section">
+    <div class="container" style="max-width: 800px;">
+        <div class="about-grid">
+            <div class="about-content">
+                <h2 class="section-title" style="text-align: left; margin-left: 0;">Informacion Personal</h2>
+
+                <div style="background: var(--bg-light); padding: 1.5rem; border-radius: 8px;">
+                    <p><strong>Nombre completo:</strong> {{ medico.get_full_name }}</p>
+                    <p><strong>Email:</strong> {{ medico.email }}</p>
+                    <p><strong>Telefono:</strong> {{ medico.telefono|default:"No especificado" }}</p>
+                    <p><strong>Fecha de registro:</strong> {{ medico.fecha_registro|date:"d/m/Y H:i" }}</p>
+                    <p><strong>Estado:</strong>
+                        {% if medico.is_active %}
+                        <span style="color: #155724;">Activo</span>
+                        {% else %}
+                        <span style="color: #721c24;">Inactivo</span>
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="section-title" style="text-align: left; margin-left: 0;">Informacion Profesional</h2>
+
+                <div style="background: var(--bg-light); padding: 1.5rem; border-radius: 8px;">
+                    {% if medico.perfil_medico %}
+                    <p><strong>Cedula Profesional:</strong> {{ medico.perfil_medico.cedula_profesional }}</p>
+                    <p><strong>Especialidad:</strong> {{ medico.perfil_medico.especialidad }}</p>
+                    <p><strong>Consultorio:</strong> {{ medico.perfil_medico.consultorio|default:"No especificado" }}</p>
+                    <p><strong>Horario:</strong> {{ medico.perfil_medico.horario_atencion|default:"No especificado" }}</p>
+                    {% if medico.perfil_medico.descripcion %}
+                    <p><strong>Descripcion:</strong><br>{{ medico.perfil_medico.descripcion }}</p>
+                    {% endif %}
+                    {% else %}
+                    <p style="color: var(--text-light);">No hay perfil profesional registrado.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+            <a href="{% url 'users:editar_medico' medico.pk %}" class="btn">Editar Medico</a>
+            <a href="{% url 'users:lista_medicos' %}" class="btn" style="background: var(--secondary-color);">Volver a la lista</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

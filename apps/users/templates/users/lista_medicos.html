@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Gestion de Medicos | Clinica HerKar{% endblock %}
+
+{% block content %}
+<div style="background: var(--primary-color); padding: 4rem 0; color: white; text-align: center;">
+    <h1 style="color: white; margin: 0;">Gestion de Medicos</h1>
+</div>
+
+<section class="section">
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <h2 class="section-title" style="margin: 0;">Medicos Registrados ({{ medicos|length }})</h2>
+            <a href="{% url 'users:crear_medico' %}" class="btn">+ Registrar Medico</a>
+        </div>
+
+        {% if medicos %}
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; background: white;">
+                <thead>
+                    <tr style="background: var(--primary-color); color: white;">
+                        <th style="padding: 1rem; text-align: left;">Nombre</th>
+                        <th style="padding: 1rem; text-align: left;">Email</th>
+                        <th style="padding: 1rem; text-align: left;">Especialidad</th>
+                        <th style="padding: 1rem; text-align: left;">Cedula</th>
+                        <th style="padding: 1rem; text-align: center;">Estado</th>
+                        <th style="padding: 1rem; text-align: center;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for medico in medicos %}
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                        <td style="padding: 1rem;">{{ medico.get_full_name }}</td>
+                        <td style="padding: 1rem;">{{ medico.email }}</td>
+                        <td style="padding: 1rem;">
+                            {% if medico.perfil_medico %}
+                            {{ medico.perfil_medico.especialidad }}
+                            {% else %}
+                            -
+                            {% endif %}
+                        </td>
+                        <td style="padding: 1rem;">
+                            {% if medico.perfil_medico %}
+                            {{ medico.perfil_medico.cedula_profesional }}
+                            {% else %}
+                            -
+                            {% endif %}
+                        </td>
+                        <td style="padding: 1rem; text-align: center;">
+                            {% if medico.is_active %}
+                            <span style="background: #d4edda; color: #155724; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.85rem;">Activo</span>
+                            {% else %}
+                            <span style="background: #f8d7da; color: #721c24; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.85rem;">Inactivo</span>
+                            {% endif %}
+                        </td>
+                        <td style="padding: 1rem; text-align: center;">
+                            <a href="{% url 'users:detalle_medico' medico.pk %}" style="color: var(--primary-color); margin-right: 1rem;">Ver</a>
+                            <a href="{% url 'users:editar_medico' medico.pk %}" style="color: var(--secondary-color);">Editar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div style="text-align: center; padding: 3rem; background: var(--bg-light); border-radius: 8px;">
+            <p style="color: var(--text-light); margin-bottom: 1rem;">No hay medicos registrados.</p>
+            <a href="{% url 'users:crear_medico' %}" class="btn">Registrar el primer medico</a>
+        </div>
+        {% endif %}
+
+        <div style="margin-top: 2rem;">
+            <a href="{% url 'users:dashboard' %}" style="color: var(--primary-color);">&larr; Volver al panel</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

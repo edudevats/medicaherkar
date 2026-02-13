@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herkar | Excelencia en Cirugía</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    {% include 'partials/_header.html' %}
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="{% static 'images/hero_operating_room.png' %}" alt="Quirófano Moderno" class="hero-bg">
+        <div class="hero-content">
+            <h1 class="hero-title">Excelencia en Cirugía de Corta Estancia</h1>
+            <p class="hero-subtitle">Más de 10 años brindando atención quirúrgica de alta calidad con tecnología de
+                vanguardia.</p>
+            <a href="{% url 'core:contacto' %}" class="btn">Agendar Cita</a>
+        </div>
+    </section>
+
+    <!-- Intro / About Preview -->
+    <section class="section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2 class="section-title" style="text-align: left; margin-left: 0;">Bienvenidos a Herkar
+                    </h2>
+                    <p>Somos una clínica especializada en cirugía de corta estancia, comprometida con su salud y
+                        bienestar. Contamos con instalaciones modernas y un equipo médico altamente calificado.</p>
+                    <p>Nuestra misión es ofrecer soluciones de salud con ética, seguridad y responsabilidad,
+                        garantizando una pronta recuperación en un ambiente cómodo y seguro.</p>
+                    <a href="{% url 'core:nosotros' %}" style="color: var(--primary-color); font-weight: 600;">Leer más
+                        sobre
+                        nosotros &rarr;</a>
+                </div>
+                <div class="about-img-wrapper">
+                    <img src="{% static 'images/medical_consultation.png' %}" alt="Consulta Médica HerKar"
+                        class="about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialities Preview -->
+    <section class="section section-bg">
+        <div class="container">
+            <h2 class="section-title">Nuestras Especialidades</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔬</div>
+                    <h3 class="service-title">Urología</h3>
+                    <p class="service-desc">Tratamientos avanzados para padecimientos urológicos, incluyendo resección
+                        de próstata y vasectomía.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3 class="service-title">Cirugía Plástica</h3>
+                    <p class="service-desc">Procedimientos estéticos y reconstructivos realizados por expertos
+                        certificados. Liposucción, implantes, y más.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👂</div>
+                    <h3 class="service-title">Otorrenolaringología</h3>
+                    <p class="service-desc">Atención integral para oídos, nariz y garganta. Rinoplastia, amígdalas y
+                        cirugía funcional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Preview -->
+    <section class="section">
+        <div class="container">
+            <div class="about-grid" style="direction: rtl;">
+                <div class="about-content" style="direction: ltr;">
+                    <h2 class="section-title" style="text-align: left; margin-left: 0;">Instalaciones de Primer Nivel
+                    </h2>
+                    <p>Contamos con 3 quirófanos totalmente equipados, áreas de recuperación monitoreadas y habitaciones
+                        confortables para su estancia.</p>
+                    <ul style="list-style: none; margin-bottom: 1rem; color: var(--text-light);">
+                        <li>✅ Quirófanos con tecnología 4K</li>
+                        <li>✅ Habitaciones privadas</li>
+                        <li>✅ Sala de venoclisis</li>
+                    </ul>
+                    <a href="{% url 'core:instalaciones' %}" class="btn">Ver Instalaciones</a>
+                </div>
+                <div class="about-img-wrapper">
+                    <img src="{% static 'images/patient_room_comfort.png' %}" alt="Habitación de Recuperación"
+                        class="about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 class="footer-title">Herkar</h3>
+                    <p style="color: #aaaaaa; font-size: 0.9rem;">Excelencia médica y calidez humana en cada
+                        procedimiento.</p>
+                </div>
+                <div>
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="footer-links">
+                        <li>📍 Calle Thiers, Ciudad de México</li>
+                        <li>📞 55 1234 5678</li>
+                        <li>✉️ contacto@cthiers.com</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-title">Enlaces</h3>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'core:nosotros' %}">Nosotros</a></li>
+                        <li><a href="{% url 'core:instalaciones' %}">Instalaciones</a></li>
+                        <li><a href="#">Aviso de Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Herkar. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

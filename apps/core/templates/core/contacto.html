@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contacto | Clinica HerKar{% endblock %}
+
+{% block content %}
+<div style="background: var(--primary-color); padding: 4rem 0; color: white; text-align: center;">
+    <h1 style="color: white; margin: 0;">Contacto</h1>
+</div>
+
+<section class="section">
+    <div class="container">
+        <div class="about-grid">
+            <!-- Contact Info -->
+            <div class="about-content">
+                <h2 class="section-title" style="text-align: left; margin-left: 0;">Pongase en contacto</h2>
+                <p style="margin-bottom: 2rem;">Estamos aqui para atenderle. Si tiene alguna duda o desea agendar
+                    una cita, no dude en escribirnos o llamarnos.</p>
+
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="color: var(--secondary-color); margin-bottom: 0.5rem;">Ubicacion</h3>
+                    <p style="color: var(--text-light);">Calle Thiers #123<br>Colonia Anzures, Alcaldia Miguel
+                        Hidalgo<br>Ciudad de Mexico, CP 11590</p>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="color: var(--secondary-color); margin-bottom: 0.5rem;">Telefonos</h3>
+                    <p style="color: var(--text-light);">
+                        55 1234 5678<br>
+                        55 8765 4321 (WhatsApp)
+                    </p>
+                </div>
+
+                <div>
+                    <h3 style="color: var(--secondary-color); margin-bottom: 0.5rem;">Horario de Atencion</h3>
+                    <p style="color: var(--text-light);">
+                        Lunes a Viernes: 8:00 am - 8:00 pm<br>
+                        Sabados: 9:00 am - 2:00 pm<br>
+                        Urgencias: 24 horas
+                    </p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="about-img-wrapper" style="background: var(--bg-light); padding: 2rem; border-radius: 8px;">
+                <form>
+                    <div style="margin-bottom: 1rem;">
+                        <label for="name" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Nombre
+                            Completo</label>
+                        <input type="text" id="name"
+                            style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 4px;"
+                            placeholder="Ingrese su nombre">
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Correo
+                            Electronico</label>
+                        <input type="email" id="email"
+                            style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 4px;"
+                            placeholder="ejemplo@correo.com">
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <label for="phone"
+                            style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Telefono</label>
+                        <input type="tel" id="phone"
+                            style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 4px;"
+                            placeholder="55 1234 5678">
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="message"
+                            style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Mensaje</label>
+                        <textarea id="message" rows="4"
+                            style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 4px;"
+                            placeholder="En que podemos ayudarle?"></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; border: none; cursor: pointer;">Enviar
+                        Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map Placeholder -->
+<section
+    style="height: 400px; background: #eee; display: flex; align-items: center; justify-content: center; color: #888; font-size: 1.5rem;">
+    <p>Mapa de Ubicacion (Google Maps Embed)</p>
+</section>
+{% endblock %}

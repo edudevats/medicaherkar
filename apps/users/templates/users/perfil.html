@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Mi Perfil | Clinica HerKar{% endblock %}
+
+{% block content %}
+<div style="background: var(--primary-color); padding: 4rem 0; color: white; text-align: center;">
+    <h1 style="color: white; margin: 0;">Mi Perfil</h1>
+</div>
+
+<section class="section">
+    <div class="container" style="max-width: 800px;">
+        <div style="background: var(--bg-light); padding: 2rem; border-radius: 8px; margin-bottom: 2rem;">
+            <h2 style="margin-bottom: 1.5rem; color: var(--secondary-color);">Informacion Personal</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <p><strong>Nombre:</strong> {{ usuario.first_name }}</p>
+                <p><strong>Apellidos:</strong> {{ usuario.last_name }}</p>
+                <p><strong>Email:</strong> {{ usuario.email }}</p>
+                <p><strong>Telefono:</strong> {{ usuario.telefono|default:"No especificado" }}</p>
+                <p><strong>Fecha de nacimiento:</strong> {{ usuario.fecha_nacimiento|date:"d/m/Y"|default:"No especificada" }}</p>
+                <p><strong>Tipo de cuenta:</strong> {{ usuario.get_tipo_usuario_display }}</p>
+                <p><strong>Miembro desde:</strong> {{ usuario.fecha_registro|date:"d/m/Y" }}</p>
+            </div>
+        </div>
+
+        {% if usuario.es_paciente and usuario.perfil_paciente %}
+        <div style="background: var(--bg-light); padding: 2rem; border-radius: 8px; margin-bottom: 2rem;">
+            <h2 style="margin-bottom: 1.5rem; color: var(--secondary-color);">Informacion Medica</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <p><strong>Tipo de sangre:</strong> {{ usuario.perfil_paciente.tipo_sangre|default:"No especificado" }}</p>
+                <p><strong>Alergias:</strong> {{ usuario.perfil_paciente.alergias|default:"Ninguna registrada" }}</p>
+                <p><strong>Contacto de emergencia:</strong> {{ usuario.perfil_paciente.contacto_emergencia|default:"No especificado" }}</p>
+                <p><strong>Telefono de emergencia:</strong> {{ usuario.perfil_paciente.telefono_emergencia|default:"No especificado" }}</p>
+            </div>
+            <p style="margin-top: 1rem;"><strong>Direccion:</strong><br>{{ usuario.perfil_paciente.direccion|default:"No especificada"|linebreaks }}</p>
+        </div>
+        {% endif %}
+
+        {% if usuario.es_medico and usuario.perfil_medico %}
+        <div style="background: var(--bg-light); padding: 2rem; border-radius: 8px; margin-bottom: 2rem;">
+            <h2 style="margin-bottom: 1.5rem; color: var(--secondary-color);">Informacion Profesional</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <p><strong>Cedula Profesional:</strong> {{ usuario.perfil_medico.cedula_profesional }}</p>
+                <p><strong>Especialidad:</strong> {{ usuario.perfil_medico.especialidad }}</p>
+                <p><strong>Consultorio:</strong> {{ usuario.perfil_medico.consultorio|default:"No especificado" }}</p>
+            </div>
+            {% if usuario.perfil_medico.descripcion %}
+            <p style="margin-top: 1rem;"><strong>Descripcion:</strong><br>{{ usuario.perfil_medico.descripcion|linebreaks }}</p>
+            {% endif %}
+            {% if usuario.perfil_medico.horario_atencion %}
+            <p style="margin-top: 1rem;"><strong>Horario de atencion:</strong><br>{{ usuario.perfil_medico.horario_atencion|linebreaks }}</p>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <div style="display: flex; gap: 1rem;">
+            <a href="{% url 'users:editar_perfil' %}" class="btn">Editar Perfil</a>
+            <a href="{% url 'users:dashboard' %}" class="btn" style="background: var(--secondary-color);">Volver al Panel</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

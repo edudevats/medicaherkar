@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Clinica HerKar | Excelencia en Cirugia{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <img src="{% static 'images/hero.png' %}" alt="Quirofano Moderno" class="hero-bg">
+    <div class="hero-content">
+        <h1 class="hero-title">Excelencia en Cirugia de Corta Estancia</h1>
+        <p class="hero-subtitle">Mas de 10 anos brindando atencion quirurgica de alta calidad con tecnologia de
+            vanguardia.</p>
+        <a href="{% url 'core:contacto' %}" class="btn">Agendar Cita</a>
+    </div>
+</section>
+
+<!-- Intro / About Preview -->
+<section class="section">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-content">
+                <h2 class="section-title" style="text-align: left; margin-left: 0;">Bienvenidos a Clinica HerKar
+                </h2>
+                <p>Somos una clinica especializada en cirugia de corta estancia, comprometida con su salud y
+                    bienestar. Contamos con instalaciones modernas y un equipo medico altamente calificado.</p>
+                <p>Nuestra mision es ofrecer soluciones de salud con etica, seguridad y responsabilidad,
+                    garantizando una pronta recuperacion en un ambiente comodo y seguro.</p>
+                <a href="{% url 'core:nosotros' %}" style="color: var(--primary-color); font-weight: 600;">Leer mas sobre
+                    nosotros &rarr;</a>
+            </div>
+            <div class="about-img-wrapper">
+                <img src="{% static 'images/reception.png' %}" alt="Recepcion Clinica HerKar" class="about-img">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Specialities Preview -->
+<section class="section section-bg">
+    <div class="container">
+        <h2 class="section-title">Nuestras Especialidades</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🔬</div>
+                <h3 class="service-title">Urologia</h3>
+                <p class="service-desc">Tratamientos avanzados para padecimientos urologicos, incluyendo reseccion
+                    de prostata y vasectomia.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h3 class="service-title">Cirugia Plastica</h3>
+                <p class="service-desc">Procedimientos esteticos y reconstructivos realizados por expertos
+                    certificados. Liposuccion, implantes, y mas.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">👂</div>
+                <h3 class="service-title">Otorrenolaringologia</h3>
+                <p class="service-desc">Atencion integral para oidos, nariz y garganta. Rinoplastia, amigdalas y
+                    cirugia funcional.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Facilities Preview -->
+<section class="section">
+    <div class="container">
+        <div class="about-grid" style="direction: rtl;">
+            <div class="about-content" style="direction: ltr;">
+                <h2 class="section-title" style="text-align: left; margin-left: 0;">Instalaciones de Primer Nivel
+                </h2>
+                <p>Contamos con 3 quirofanos totalmente equipados, areas de recuperacion monitoreadas y habitaciones
+                    confortables para su estancia.</p>
+                <ul style="list-style: none; margin-bottom: 1rem; color: var(--text-light);">
+                    <li>Quirofanos con tecnologia 4K</li>
+                    <li>Habitaciones privadas</li>
+                    <li>Sala de venoclisis</li>
+                </ul>
+                <a href="{% url 'core:instalaciones' %}" class="btn">Ver Instalaciones</a>
+            </div>
+            <div class="about-img-wrapper">
+                <img src="{% static 'images/recovery.png' %}" alt="Habitacion de Recuperacion" class="about-img">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Especialidades | Clinica HerKar{% endblock %}
+
+{% block content %}
+<div style="background: var(--primary-color); padding: 4rem 0; color: white; text-align: center;">
+    <h1 style="color: white; margin: 0;">Nuestras Especialidades</h1>
+</div>
+
+<section class="section">
+    <div class="container">
+        <div class="services-grid" style="grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));">
+
+            <div class="service-card">
+                <div class="service-icon">🔬</div>
+                <h3 class="service-title">Urologia</h3>
+                <p class="service-desc">Diagnostico y tratamiento de enfermedades del sistema urinario.
+                    Procedimientos comunes:</p>
+                <ul style="text-align: left; margin-top: 1rem; color: var(--text-light); padding-left: 1.5rem;">
+                    <li>Reseccion transuretral de prostata</li>
+                    <li>Vasectomia sin bisturi</li>
+                    <li>Tratamiento de varicocele</li>
+                    <li>Litotricia (calculos renales)</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h3 class="service-title">Cirugia Plastica y Reconstructiva</h3>
+                <p class="service-desc">Procedimientos esteticos realizados por cirujanos certificados.</p>
+                <ul style="text-align: left; margin-top: 1rem; color: var(--text-light); padding-left: 1.5rem;">
+                    <li>Blefaroplastia (parpados)</li>
+                    <li>Liposuccion y Lipoescultura</li>
+                    <li>Implantes mamarios</li>
+                    <li>Abdominoplastia</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">👂</div>
+                <h3 class="service-title">Otorrenolaringologia</h3>
+                <p class="service-desc">Atencion de padecimientos de oido, nariz y garganta.</p>
+                <ul style="text-align: left; margin-top: 1rem; color: var(--text-light); padding-left: 1.5rem;">
+                    <li>Rinoplastia funcional y estetica</li>
+                    <li>Amigdalectomia</li>
+                    <li>Cirugia de cornetes</li>
+                    <li>Septoplastia</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🏥</div>
+                <h3 class="service-title">Cirugia General</h3>
+                <p class="service-desc">Intervenciones quirurgicas de corta estancia.</p>
+                <ul style="text-align: left; margin-top: 1rem; color: var(--text-light); padding-left: 1.5rem;">
+                    <li>Hernias (inguinal, umbilical, hiatal)</li>
+                    <li>Colecistectomia (vesicula)</li>
+                    <li>Apendicectomia laparoscopica</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🦴</div>
+                <h3 class="service-title">Ortopedia</h3>
+                <p class="service-desc">Tratamiento de lesiones musculoesqueleticas.</p>
+                <ul style="text-align: left; margin-top: 1rem; color: var(--text-light); padding-left: 1.5rem;">
+                    <li>Artroscopia de rodilla y hombro</li>
+                    <li>Cirugia de mano</li>
+                    <li>Tratamiento de fracturas menores</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">💊</div>
+                <h3 class="service-title">Ginecologia</h3>
+                <p class="service-desc">Salud integral de la mujer.</p>
+                <ul style="text-align: left; margin-top: 1rem; color: var(--text-light); padding-left: 1.5rem;">
+                    <li>Histerectomia laparoscopica</li>
+                    <li>Quistes ovaricos</li>
+                    <li>Laparoscopia diagnostica</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

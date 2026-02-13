@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Mi Panel | Clinica HerKar{% endblock %}
+
+{% block content %}
+<div style="background: var(--primary-color); padding: 4rem 0; color: white; text-align: center;">
+    <h1 style="color: white; margin: 0;">Mi Panel</h1>
+    <p style="margin-top: 0.5rem; opacity: 0.9;">Bienvenido, {{ user.get_full_name }}</p>
+</div>
+
+<section class="section">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-content">
+                <h2 class="section-title" style="text-align: left; margin-left: 0;">Mi Informacion</h2>
+
+                <div style="background: var(--bg-light); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                    <p><strong>Nombre:</strong> {{ user.get_full_name }}</p>
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    <p><strong>Telefono:</strong> {{ user.telefono|default:"No especificado" }}</p>
+                    <p><strong>Fecha de nacimiento:</strong> {{ user.fecha_nacimiento|date:"d/m/Y"|default:"No especificada" }}</p>
+                    {% if user.perfil_paciente %}
+                    <p><strong>Tipo de sangre:</strong> {{ user.perfil_paciente.tipo_sangre|default:"No especificado" }}</p>
+                    {% endif %}
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <a href="{% url 'users:perfil' %}" class="btn">Ver Perfil Completo</a>
+                    <a href="{% url 'users:editar_perfil' %}" class="btn" style="background: var(--secondary-color);">Editar Perfil</a>
+                </div>
+            </div>
+
+            <div class="about-img-wrapper" style="background: var(--bg-light); padding: 2rem; border-radius: 8px;">
+                <h3 style="margin-bottom: 1rem;">Proximas funcionalidades</h3>
+                <ul style="color: var(--text-light); line-height: 2;">
+                    <li>Agendar citas</li>
+                    <li>Ver historial de consultas</li>
+                    <li>Descargar resultados</li>
+                    <li>Contactar a mi medico</li>
+                </ul>
+
+                <div style="margin-top: 2rem;">
+                    <a href="{% url 'core:contacto' %}" class="btn">Agendar Cita</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

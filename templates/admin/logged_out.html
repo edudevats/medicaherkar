@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sesion cerrada | Clinica HerKar{% endblock %}
+
+{% block content %}
+<div style="background: var(--primary-color); padding: 4rem 0; color: white; text-align: center;">
+    <h1 style="color: white; margin: 0;">Sesion Cerrada</h1>
+</div>
+
+<section class="section">
+    <div class="container" style="max-width: 500px; text-align: center;">
+        <div style="background: var(--bg-light); padding: 2rem; border-radius: 8px;">
+            <p style="margin-bottom: 1.5rem; color: var(--text-light);">
+                Ha cerrado sesion correctamente.
+            </p>
+
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="{% url 'admin:login' %}" class="btn">Volver a iniciar sesion</a>
+                <a href="{% url 'core:index' %}" class="btn" style="background: var(--secondary-color);">Ir al sitio</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

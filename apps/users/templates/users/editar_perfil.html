@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Editar Perfil | Clinica HerKar{% endblock %}
+
+{% block content %}
+<div style="background: var(--primary-color); padding: 4rem 0; color: white; text-align: center;">
+    <h1 style="color: white; margin: 0;">Editar Perfil</h1>
+</div>
+
+<section class="section">
+    <div class="container" style="max-width: 600px;">
+        <div style="background: var(--bg-light); padding: 2rem; border-radius: 8px;">
+            <form method="post">
+                {% csrf_token %}
+
+                {% for field in form %}
+                <div style="margin-bottom: 1rem;">
+                    <label for="{{ field.id_for_label }}" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+                        {{ field.label }}
+                    </label>
+                    {{ field }}
+                    {% if field.errors %}
+                    <small style="color: #dc3545;">{{ field.errors.0 }}</small>
+                    {% endif %}
+                </div>
+                {% endfor %}
+
+                <button type="submit" class="btn" style="width: 100%; border: none; cursor: pointer;">
+                    Guardar Cambios
+                </button>
+            </form>
+
+            <div style="margin-top: 1.5rem;">
+                <a href="{% url 'users:perfil' %}" style="color: var(--primary-color);">&larr; Volver al perfil</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

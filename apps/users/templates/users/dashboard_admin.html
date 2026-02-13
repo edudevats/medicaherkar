@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Panel de Administrador | Clinica HerKar{% endblock %}
+
+{% block content %}
+<div style="background: var(--primary-color); padding: 4rem 0; color: white; text-align: center;">
+    <h1 style="color: white; margin: 0;">Panel de Administrador</h1>
+    <p style="margin-top: 0.5rem; opacity: 0.9;">Bienvenido, {{ user.get_full_name }}</p>
+</div>
+
+<section class="section">
+    <div class="container">
+        <!-- Estadisticas -->
+        <div class="services-grid" style="margin-bottom: 3rem;">
+            <div class="service-card" style="text-align: center;">
+                <div style="font-size: 3rem; color: var(--primary-color);">{{ total_medicos }}</div>
+                <h3 class="service-title">Medicos Registrados</h3>
+                <a href="{% url 'users:lista_medicos' %}" style="color: var(--primary-color);">Ver todos &rarr;</a>
+            </div>
+            <div class="service-card" style="text-align: center;">
+                <div style="font-size: 3rem; color: var(--primary-color);">{{ total_pacientes }}</div>
+                <h3 class="service-title">Pacientes Registrados</h3>
+                <a href="{% url 'users:lista_pacientes' %}" style="color: var(--primary-color);">Ver todos &rarr;</a>
+            </div>
+            <div class="service-card" style="text-align: center;">
+                <div style="font-size: 3rem; color: var(--primary-color);">
+                    <a href="/admin/" style="color: inherit; text-decoration: none;">&#9881;</a>
+                </div>
+                <h3 class="service-title">Django Admin</h3>
+                <a href="/admin/" style="color: var(--primary-color);">Ir al admin &rarr;</a>
+            </div>
+        </div>
+
+        <!-- Acciones rapidas -->
+        <h2 class="section-title" style="text-align: left;">Acciones Rapidas</h2>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem;">
+            <a href="{% url 'users:crear_medico' %}" class="btn">+ Registrar Medico</a>
+            <a href="{% url 'users:lista_medicos' %}" class="btn" style="background: var(--secondary-color);">Ver Medicos</a>
+            <a href="{% url 'users:lista_pacientes' %}" class="btn" style="background: var(--secondary-color);">Ver Pacientes</a>
+        </div>
+
+        <!-- Ultimos registros -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+            <div>
+                <h3 style="margin-bottom: 1rem;">Ultimos Medicos</h3>
+                {% if medicos_recientes %}
+                <ul style="list-style: none; padding: 0;">
+                    {% for medico in medicos_recientes %}
+                    <li style="padding: 1rem; background: var(--bg-light); margin-bottom: 0.5rem; border-radius: 4px;">
+                        <strong>{{ medico.get_full_name }}</strong><br>
+                        <small style="color: var(--text-light);">{{ medico.email }} - {{ medico.fecha_registro|date:"d/m/Y" }}</small>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p style="color: var(--text-light);">No hay medicos registrados.</p>
+                {% endif %}
+            </div>
+            <div>
+                <h3 style="margin-bottom: 1rem;">Ultimos Pacientes</h3>
+                {% if pacientes_recientes %}
+                <ul style="list-style: none; padding: 0;">
+                    {% for paciente in pacientes_recientes %}
+                    <li style="padding: 1rem; background: var(--bg-light); margin-bottom: 0.5rem; border-radius: 4px;">
+                        <strong>{{ paciente.get_full_name }}</strong><br>
+                        <small style="color: var(--text-light);">{{ paciente.email }} - {{ paciente.fecha_registro|date:"d/m/Y" }}</small>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p style="color: var(--text-light);">No hay pacientes registrados.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

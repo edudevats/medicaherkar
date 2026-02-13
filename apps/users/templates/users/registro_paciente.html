@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Registro de Paciente | Clinica HerKar{% endblock %}
+
+{% block content %}
+<div style="background: var(--primary-color); padding: 4rem 0; color: white; text-align: center;">
+    <h1 style="color: white; margin: 0;">Registro de Paciente</h1>
+</div>
+
+<section class="section">
+    <div class="container" style="max-width: 600px;">
+        <div style="background: var(--bg-light); padding: 2rem; border-radius: 8px;">
+            <form method="post">
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                <div style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
+                    {% for error in form.non_field_errors %}
+                    <p style="margin: 0;">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div style="margin-bottom: 1rem;">
+                        <label for="{{ form.first_name.id_for_label }}" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+                            Nombre *
+                        </label>
+                        {{ form.first_name }}
+                        {% if form.first_name.errors %}
+                        <small style="color: #dc3545;">{{ form.first_name.errors.0 }}</small>
+                        {% endif %}
+                    </div>
+
+                    <div style="margin-bottom: 1rem;">
+                        <label for="{{ form.last_name.id_for_label }}" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+                            Apellidos *
+                        </label>
+                        {{ form.last_name }}
+                        {% if form.last_name.errors %}
+                        <small style="color: #dc3545;">{{ form.last_name.errors.0 }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <label for="{{ form.email.id_for_label }}" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+                        Correo electronico *
+                    </label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                    <small style="color: #dc3545;">{{ form.email.errors.0 }}</small>
+                    {% endif %}
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div style="margin-bottom: 1rem;">
+                        <label for="{{ form.telefono.id_for_label }}" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+                            Telefono
+                        </label>
+                        {{ form.telefono }}
+                        {% if form.telefono.errors %}
+                        <small style="color: #dc3545;">{{ form.telefono.errors.0 }}</small>
+                        {% endif %}
+                    </div>
+
+                    <div style="margin-bottom: 1rem;">
+                        <label for="{{ form.fecha_nacimiento.id_for_label }}" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+                            Fecha de nacimiento
+                        </label>
+                        {{ form.fecha_nacimiento }}
+                        {% if form.fecha_nacimiento.errors %}
+                        <small style="color: #dc3545;">{{ form.fecha_nacimiento.errors.0 }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div style="margin-bottom: 1rem;">
+                        <label for="{{ form.password1.id_for_label }}" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+                            Contrasena *
+                        </label>
+                        {{ form.password1 }}
+                        {% if form.password1.errors %}
+                        <small style="color: #dc3545;">{{ form.password1.errors.0 }}</small>
+                        {% endif %}
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="{{ form.password2.id_for_label }}" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+                            Confirmar contrasena *
+                        </label>
+                        {{ form.password2 }}
+                        {% if form.password2.errors %}
+                        <small style="color: #dc3545;">{{ form.password2.errors.0 }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; border: none; cursor: pointer;">
+                    Crear cuenta
+                </button>
+            </form>
+
+            <div style="text-align: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                <p style="color: var(--text-light);">Ya tienes cuenta?</p>
+                <a href="{% url 'users:login' %}" style="color: var(--primary-color); font-weight: 600;">
+                    Iniciar sesion
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

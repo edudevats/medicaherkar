@@ -1,0 +1,32 @@
+{% load static %}
+<!-- Footer -->
+<footer class="main-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <h3 class="footer-title">Clinica HerKar</h3>
+                <p style="color: #aaaaaa; font-size: 0.9rem;">Excelencia medica y calidez humana en cada
+                    procedimiento.</p>
+            </div>
+            <div>
+                <h3 class="footer-title">Contacto</h3>
+                <ul class="footer-links">
+                    <li>Calle Thiers, Ciudad de Mexico</li>
+                    <li>55 1234 5678</li>
+                    <li>contacto@cthiers.com</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-title">Enlaces</h3>
+                <ul class="footer-links">
+                    <li><a href="{% url 'core:nosotros' %}">Nosotros</a></li>
+                    <li><a href="{% url 'core:instalaciones' %}">Instalaciones</a></li>
+                    <li><a href="{% url 'core:contacto' %}">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2024 Clinica HerKar. Todos los derechos reservados.
+        </div>
+    </div>
+</footer>

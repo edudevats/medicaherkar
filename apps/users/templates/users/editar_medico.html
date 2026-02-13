@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Editar Medico | Clinica HerKar{% endblock %}
+
+{% block content %}
+<div style="background: var(--primary-color); padding: 4rem 0; color: white; text-align: center;">
+    <h1 style="color: white; margin: 0;">Editar Medico</h1>
+</div>
+
+<section class="section">
+    <div class="container" style="max-width: 600px;">
+        <div style="background: var(--bg-light); padding: 2rem; border-radius: 8px;">
+            <form method="post">
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                <div style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
+                    {% for error in form.non_field_errors %}
+                    <p style="margin: 0;">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                {% for field in form %}
+                <div style="margin-bottom: 1rem;">
+                    <label for="{{ field.id_for_label }}" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+                        {{ field.label }}
+                    </label>
+                    {% if field.field.widget.input_type == 'checkbox' %}
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        {{ field }}
+                        <span>Cuenta activa</span>
+                    </div>
+                    {% else %}
+                    <input type="{{ field.field.widget.input_type|default:'text' }}"
+                           name="{{ field.name }}"
+                           id="{{ field.id_for_label }}"
+                           value="{{ field.value|default:'' }}"
+                           class="form-control"
+                           style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 4px;">
+                    {% endif %}
+                    {% if field.errors %}
+                    <small style="color: #dc3545;">{{ field.errors.0 }}</small>
+                    {% endif %}
+                </div>
+                {% endfor %}
+
+                <button type="submit" class="btn" style="width: 100%; border: none; cursor: pointer;">
+                    Guardar Cambios
+                </button>
+            </form>
+
+            <div style="margin-top: 1.5rem;">
+                <a href="{% url 'users:lista_medicos' %}" style="color: var(--primary-color);">&larr; Volver a la lista</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

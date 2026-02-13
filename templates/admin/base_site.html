@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }} | Clinica HerKar Admin{% endblock %}
+
+{% block content %}
+<div style="background: var(--primary-color); padding: 2rem 0; color: white; text-align: center;">
+    <h1 style="color: white; margin: 0;">Panel de Administracion</h1>
+    <p style="margin-top: 0.5rem; opacity: 0.9;">Clinica HerKar</p>
+</div>
+
+<section class="section" style="padding-top: 2rem;">
+    <div class="container">
+        <!-- Navegacion del Admin -->
+        <div style="background: var(--bg-light); padding: 1rem; border-radius: 8px; margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+            <a href="{% url 'admin:index' %}" style="color: var(--primary-color); font-weight: 600;">Inicio Admin</a>
+            <span style="color: var(--border-color);">|</span>
+            <a href="{% url 'users:dashboard' %}" style="color: var(--secondary-color);">Mi Panel</a>
+            <span style="color: var(--border-color);">|</span>
+            <a href="{% url 'core:index' %}" style="color: var(--secondary-color);">Ver Sitio</a>
+            <span style="flex: 1;"></span>
+            {% if user.is_authenticated %}
+            <span style="color: var(--text-light);">{{ user.email }}</span>
+            <a href="{% url 'admin:logout' %}" style="color: var(--primary-color);">Cerrar sesion</a>
+            {% endif %}
+        </div>
+
+        {% if messages %}
+        <div style="margin-bottom: 1rem;">
+            {% for message in messages %}
+            <div style="padding: 1rem; border-radius: 8px; margin-bottom: 0.5rem; background: {% if message.tags == 'success' %}#d4edda{% elif message.tags == 'error' %}#f8d7da{% else %}#cce5ff{% endif %}; color: {% if message.tags == 'success' %}#155724{% elif message.tags == 'error' %}#721c24{% else %}#004085{% endif %};">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% block breadcrumbs %}
+        <div style="margin-bottom: 1rem; color: var(--text-light); font-size: 0.9rem;">
+            {% block breadcrumb_items %}
+            <a href="{% url 'admin:index' %}" style="color: var(--primary-color);">Inicio</a>
+            {% endblock %}
+        </div>
+        {% endblock %}
+
+        <div class="admin-content">
+            {% block admin_content %}{% endblock %}
+        </div>
+    </div>
+</section>
+{% endblock %}

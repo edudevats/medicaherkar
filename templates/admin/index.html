@@ -1,0 +1,76 @@
+{% extends 'admin/base_site.html' %}
+{% load static %}
+
+{% block admin_content %}
+<h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Gestion del Sistema</h2>
+
+<div class="services-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+    {% for app in app_list %}
+    <div class="service-card">
+        <h3 class="service-title" style="color: var(--primary-color); margin-bottom: 1rem;">
+            {{ app.name }}
+        </h3>
+        <ul style="list-style: none; padding: 0;">
+            {% for model in app.models %}
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border-color);">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <a href="{{ model.admin_url }}" style="color: var(--text-color); font-weight: 500;">
+                        {{ model.name }}
+                    </a>
+                    <div style="display: flex; gap: 0.5rem;">
+                        {% if model.add_url %}
+                        <a href="{{ model.add_url }}" style="color: var(--primary-color); font-size: 0.85rem;">+ Agregar</a>
+                        {% endif %}
+                        {% if model.admin_url %}
+                        <a href="{{ model.admin_url }}" style="color: var(--secondary-color); font-size: 0.85rem;">Ver</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% empty %}
+    <div class="service-card">
+        <p style="color: var(--text-light);">No hay aplicaciones disponibles.</p>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Acciones Recientes -->
+{% if recent_actions %}
+<div style="margin-top: 3rem;">
+    <h3 style="margin-bottom: 1rem;">Acciones Recientes</h3>
+    <div style="background: var(--bg-light); border-radius: 8px; overflow: hidden;">
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background: var(--primary-color); color: white;">
+                    <th style="padding: 1rem; text-align: left;">Accion</th>
+                    <th style="padding: 1rem; text-align: left;">Objeto</th>
+                    <th style="padding: 1rem; text-align: left;">Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in recent_actions %}
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                    <td style="padding: 0.75rem 1rem;">
+                        {% if entry.is_addition %}Agregado{% endif %}
+                        {% if entry.is_change %}Modificado{% endif %}
+                        {% if entry.is_deletion %}Eliminado{% endif %}
+                    </td>
+                    <td style="padding: 0.75rem 1rem;">
+                        {% if entry.get_admin_url %}
+                        <a href="{{ entry.get_admin_url }}" style="color: var(--primary-color);">{{ entry.object_repr }}</a>
+                        {% else %}
+                        {{ entry.object_repr }}
+                        {% endif %}
+                    </td>
+                    <td style="padding: 0.75rem 1rem; color: var(--text-light);">{{ entry.action_time|date:"d/m/Y H:i" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Nosotros | Clinica HerKar{% endblock %}
+
+{% block content %}
+<div style="background: var(--primary-color); padding: 4rem 0; color: white; text-align: center;">
+    <h1 style="color: white; margin: 0;">Quienes Somos</h1>
+</div>
+
+<section class="section">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-content">
+                <h2 class="section-title" style="text-align: left; margin-left: 0;">Nuestra Mision</h2>
+                <p>En Clinica HerKar, nuestra mision es proporcionar servicios medicos y quirurgicos de corta
+                    estancia con los mas altos estandares de calidad, seguridad y etica profesional.</p>
+                <p>Nos dedicamos a cuidar la salud de nuestros pacientes a traves de una atencion personalizada y
+                    humana, respaldada por tecnologia de vanguardia y un equipo medico de excelencia.</p>
+
+                <h3 style="margin-top: 2rem;">Nuestros Valores</h3>
+                <ul style="list-style: none; color: var(--text-light);">
+                    <li style="margin-bottom: 0.5rem;"><strong>Etica:</strong> Actuamos siempre con integridad y
+                        transparencia.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Seguridad:</strong> La integridad del paciente es
+                        nuestra prioridad absoluta.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Calidez:</strong> Trato humano y empatico en todo
+                        momento.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Innovacion:</strong> Mejora continua en nuestros
+                        procesos y equipos.</li>
+                </ul>
+            </div>
+            <div class="about-img-wrapper">
+                <img src="{% static 'images/reception.png' %}" alt="Recepcion" class="about-img">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-bg" style="text-align: center;">
+    <div class="container">
+        <h2 class="section-title">Por que elegirnos?</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3 class="service-title">+10 Anos de Experiencia</h3>
+                <p class="service-desc">Una decada dedicados a la excelencia en cirugia ambulatoria.</p>
+            </div>
+            <div class="service-card">
+                <h3 class="service-title">Ubicacion Privilegiada</h3>
+                <p class="service-desc">Facil acceso en una de las mejores zonas de la ciudad.</p>
+            </div>
+            <div class="service-card">
+                <h3 class="service-title">Precios Competitivos</h3>
+                <p class="service-desc">Calidad hospitalaria a costos accesibles.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

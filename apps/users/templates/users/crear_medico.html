@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Registrar Medico | Clinica HerKar{% endblock %}
+
+{% block content %}
+<div style="background: var(--primary-color); padding: 4rem 0; color: white; text-align: center;">
+    <h1 style="color: white; margin: 0;">Registrar Medico</h1>
+</div>
+
+<section class="section">
+    <div class="container" style="max-width: 600px;">
+        <div style="background: var(--bg-light); padding: 2rem; border-radius: 8px;">
+            <form method="post">
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                <div style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
+                    {% for error in form.non_field_errors %}
+                    <p style="margin: 0;">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <h3 style="margin-bottom: 1rem; color: var(--secondary-color);">Informacion Personal</h3>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Nombre *</label>
+                        {{ form.first_name }}
+                        {% if form.first_name.errors %}
+                        <small style="color: #dc3545;">{{ form.first_name.errors.0 }}</small>
+                        {% endif %}
+                    </div>
+
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Apellidos *</label>
+                        {{ form.last_name }}
+                        {% if form.last_name.errors %}
+                        <small style="color: #dc3545;">{{ form.last_name.errors.0 }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Correo electronico *</label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                    <small style="color: #dc3545;">{{ form.email.errors.0 }}</small>
+                    {% endif %}
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Telefono</label>
+                    {{ form.telefono }}
+                </div>
+
+                <h3 style="margin: 1.5rem 0 1rem; color: var(--secondary-color);">Informacion Profesional</h3>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Cedula Profesional *</label>
+                        {{ form.cedula_profesional }}
+                        {% if form.cedula_profesional.errors %}
+                        <small style="color: #dc3545;">{{ form.cedula_profesional.errors.0 }}</small>
+                        {% endif %}
+                    </div>
+
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Especialidad *</label>
+                        {{ form.especialidad }}
+                        {% if form.especialidad.errors %}
+                        <small style="color: #dc3545;">{{ form.especialidad.errors.0 }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <h3 style="margin: 1.5rem 0 1rem; color: var(--secondary-color);">Credenciales de Acceso</h3>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Contrasena *</label>
+                        {{ form.password1 }}
+                        {% if form.password1.errors %}
+                        <small style="color: #dc3545;">{{ form.password1.errors.0 }}</small>
+                        {% endif %}
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Confirmar contrasena *</label>
+                        {{ form.password2 }}
+                        {% if form.password2.errors %}
+                        <small style="color: #dc3545;">{{ form.password2.errors.0 }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; border: none; cursor: pointer;">
+                    Registrar Medico
+                </button>
+            </form>
+
+            <div style="margin-top: 1.5rem;">
+                <a href="{% url 'users:lista_medicos' %}" style="color: var(--primary-color);">&larr; Volver a la lista</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

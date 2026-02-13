@@ -1,0 +1,38 @@
+{% extends 'admin/base_site.html' %}
+{% load static %}
+
+{% block breadcrumb_items %}
+<a href="{% url 'admin:index' %}" style="color: var(--primary-color);">Inicio</a>
+<span style="margin: 0 0.5rem;">&rsaquo;</span>
+<a href="{% url opts|admin_urlname:'changelist' %}" style="color: var(--primary-color);">{{ opts.verbose_name_plural|capfirst }}</a>
+<span style="margin: 0 0.5rem;">&rsaquo;</span>
+<a href="{% url opts|admin_urlname:'change' object.pk %}" style="color: var(--primary-color);">{{ object }}</a>
+<span style="margin: 0 0.5rem;">&rsaquo;</span>
+<span>Eliminar</span>
+{% endblock %}
+
+{% block admin_content %}
+<div style="background: #f8d7da; padding: 2rem; border-radius: 8px; margin-bottom: 2rem;">
+    <h2 style="color: #721c24; margin-bottom: 1rem;">Confirmar eliminacion</h2>
+    <p style="color: #721c24;">
+        Esta seguro de que desea eliminar el {{ opts.verbose_name }} "<strong>{{ object }}</strong>"?
+    </p>
+
+    {% if deleted_objects %}
+    <p style="color: #721c24; margin-top: 1rem;">Los siguientes objetos relacionados tambien seran eliminados:</p>
+    <ul style="margin-top: 0.5rem; color: #721c24;">
+        {% for obj in deleted_objects %}
+        <li>{{ obj }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    <div style="display: flex; gap: 1rem;">
+        <button type="submit" class="btn" style="background: #dc3545;">Si, eliminar</button>
+        <a href="{% url opts|admin_urlname:'change' object.pk %}" class="btn" style="background: var(--secondary-color);">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends 'admin/base_site.html' %}
+{% load static %}
+
+{% block breadcrumb_items %}
+<a href="{% url 'admin:index' %}" style="color: var(--primary-color);">Inicio</a>
+<span style="margin: 0 0.5rem;">&rsaquo;</span>
+<a href="{% url opts|admin_urlname:'changelist' %}" style="color: var(--primary-color);">{{ opts.verbose_name_plural|capfirst }}</a>
+<span style="margin: 0 0.5rem;">&rsaquo;</span>
+<span>{% if add %}Agregar{% else %}{{ original }}{% endif %}</span>
+{% endblock %}
+
+{% block admin_content %}
+<h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">
+    {% if add %}Agregar {{ opts.verbose_name }}{% else %}Editar {{ opts.verbose_name }}{% endif %}
+</h2>
+
+<div style="background: var(--bg-light); padding: 2rem; border-radius: 8px;">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% if adminform.form.non_field_errors %}
+        <div style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
+            {{ adminform.form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        {% for fieldset in adminform %}
+        <fieldset style="border: none; margin-bottom: 1.5rem;">
+            {% if fieldset.name %}
+            <h3 style="color: var(--secondary-color); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-color);">
+                {{ fieldset.name }}
+            </h3>
+            {% endif %}
+
+            {% for line in fieldset %}
+            {% for field in line %}
+            <div style="margin-bottom: 1rem;">
+                {% if not field.field.is_hidden %}
+                <label for="{{ field.field.id_for_label }}" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+                    {{ field.field.label }}
+                    {% if field.field.field.required %}<span style="color: var(--primary-color);">*</span>{% endif %}
+                </label>
+                {% endif %}
+
+                <div class="admin-field">
+                    {{ field.field }}
+                </div>
+
+                {% if field.field.help_text %}
+                <small style="color: var(--text-light); display: block; margin-top: 0.25rem;">{{ field.field.help_text }}</small>
+                {% endif %}
+
+                {% if field.field.errors %}
+                <small style="color: #dc3545; display: block; margin-top: 0.25rem;">{{ field.field.errors }}</small>
+                {% endif %}
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </fieldset>
+        {% endfor %}
+
+        <!-- Inlines -->
+        {% for inline_admin_formset in inline_admin_formsets %}
+        <fieldset style="border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+            <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">{{ inline_admin_formset.opts.verbose_name_plural|capfirst }}</h3>
+            {{ inline_admin_formset.formset.management_form }}
+
+            {% for inline_form in inline_admin_formset %}
+            <div style="padding: 1rem; background: white; border-radius: 4px; margin-bottom: 0.5rem;">
+                {% for field in inline_form %}
+                {% if not field.is_hidden %}
+                <div style="margin-bottom: 0.75rem;">
+                    <label style="display: block; margin-bottom: 0.25rem; font-weight: 500; font-size: 0.9rem;">{{ field.label }}</label>
+                    {{ field }}
+                </div>
+                {% else %}
+                {{ field }}
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </fieldset>
+        {% endfor %}
+
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+            <button type="submit" name="_save" class="btn">Guardar</button>
+            <button type="submit" name="_continue" class="btn" style="background: var(--secondary-color);">Guardar y continuar editando</button>
+            {% if not add %}
+            <button type="submit" name="_addanother" class="btn" style="background: #6c757d;">Guardar y agregar otro</button>
+            {% endif %}
+        </div>
+    </form>
+
+    {% if not add and has_delete_permission %}
+    <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+        <a href="{% url opts|admin_urlname:'delete' original.pk %}" style="color: #dc3545;">Eliminar {{ opts.verbose_name }}</a>
+    </div>
+    {% endif %}
+</div>
+
+<div style="margin-top: 1.5rem;">
+    <a href="{% url opts|admin_urlname:'changelist' %}" style="color: var(--primary-color);">&larr; Volver a la lista</a>
+</div>
+{% endblock %}
