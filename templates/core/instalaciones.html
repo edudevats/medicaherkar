@@ -1,84 +1,92 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instalaciones | Herkar</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
-        rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-</head>
+{% block title %}Instalaciones | Clinica HerKar{% endblock %}
 
-<body>
+{% block content %}
 
-    {% include 'partials/_header.html' %}
+<!-- Page Banner -->
+<div class="page-banner">
+    <h1>Nuestras Instalaciones</h1>
+    <p>Infraestructura de vanguardia para tu seguridad y confort</p>
+</div>
 
-    <div style="background: var(--primary-color); padding: 4rem 0; color: white; text-align: center;">
-        <h1 style="color: white; margin: 0;">Nuestras Instalaciones</h1>
+<!-- Operating Rooms -->
+<section class="section">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-img-wrapper">
+                <img src="{% static 'images/surgical_suite_tech.png' %}" alt="Quirofano de Alta Tecnologia"
+                    class="about-img">
+            </div>
+            <div class="about-content">
+                <h2 class="section-title" style="text-align: left;">Quirofanos de Vanguardia</h2>
+                <p>Contamos con 3 quirofanos equipados con la mas alta tecnologia para procedimientos de corta
+                    estancia.</p>
+                <p>Nuestros equipos incluyen monitores de signos vitales de ultima generacion, maquinas de anestesia
+                    de precision y sistemas de iluminacion LED para garantizar la mejor visibilidad durante las
+                    intervenciones.</p>
+            </div>
+        </div>
     </div>
+</section>
 
-    <section class="section">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-img-wrapper">
-                    <img src="{% static 'images/surgical_suite_tech.png' %}" alt="Quirófano de Alta Tecnología"
-                        class="about-img">
-                </div>
-                <div class="about-content">
-                    <h2 class="section-title" style="text-align: left; margin-left: 0;">Quirófanos de Vanguardia</h2>
-                    <p>Contamos con 3 quirófanos equipados con la más alta tecnología para procedimientos de corta
-                        estancia.</p>
-                    <p>Nuestros equipos incluyen monitores de signos vitales de última generación, máquinas de anestesia
-                        de precisión y sistemas de iluminación LED para garantizar la mejor visibilidad durante las
-                        intervenciones.</p>
-                </div>
+<!-- Recovery Areas -->
+<section class="section section-bg">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-content">
+                <h2 class="section-title" style="text-align: left;">Areas de Recuperacion</h2>
+                <p>Disenadas para el confort y tranquilidad de nuestros pacientes. Cada cubiculo de recuperacion
+                    cuenta con monitoreo constante y privacidad.</p>
+                <p>Todo el ambiente esta pensado para reducir el estres y favorecer una rapida recuperacion
+                    post-operatoria.</p>
+            </div>
+            <div class="about-img-wrapper">
+                <img src="{% static 'images/recovery_monitoring.png' %}" alt="Area de Recuperacion"
+                    class="about-img">
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="section section-bg">
-        <div class="container">
-            <div class="about-grid" style="direction: rtl;">
-                <div class="team-card">
-                    <img src="{% static 'images/recovery_monitoring.png' %}" alt="Área de Recuperación"
-                        class="team-img">
-                </div>
-                <div class="about-content" style="direction: ltr;">
-                    <h2 class="section-title" style="text-align: left; margin-left: 0;">Áreas de Recuperación</h2>
-                    <p>Diseñadas para el confort y tranquilidad de nuestros pacientes. Cada cubículo de recuperación
-                        cuenta con monitoreo constante y privacidad.</p>
-                    <p>Todo el ambiente está pensado para reducir el estrés y favorecer una rápida recuperación
-                        post-operatoria.</p>
-                </div>
+<!-- Infrastructure Grid -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Toda Nuestra Infraestructura</h2>
+        <div class="infra-grid">
+            <div class="infra-card">
+                <div class="infra-icon"><i class="fas fa-procedures"></i></div>
+                <h3>3 Quirofanos</h3>
+                <p>Equipados con tecnologia 4K, monitores de signos vitales e iluminacion LED.</p>
+            </div>
+            <div class="infra-card">
+                <div class="infra-icon"><i class="fas fa-heartbeat"></i></div>
+                <h3>Sala de Recuperacion</h3>
+                <p>Monitoreo constante con equipos avanzados para recuperacion segura.</p>
+            </div>
+            <div class="infra-card">
+                <div class="infra-icon"><i class="fas fa-stethoscope"></i></div>
+                <h3>3 Consultorios</h3>
+                <p>Modernos y completamente amueblados para atencion medica.</p>
+            </div>
+            <div class="infra-card">
+                <div class="infra-icon"><i class="fas fa-bed"></i></div>
+                <h3>3 Habitaciones</h3>
+                <p>Corta estancia (hasta 24 horas) con todas las comodidades.</p>
+            </div>
+            <div class="infra-card">
+                <div class="infra-icon"><i class="fas fa-syringe"></i></div>
+                <h3>Sala de Venoclisis</h3>
+                <p>Tratamientos intravenosos ambulatorios con supervision.</p>
+            </div>
+            <div class="infra-card">
+                <div class="infra-icon"><i class="fas fa-couch"></i></div>
+                <h3>Areas Comunes</h3>
+                <p>Espacios de confort para pacientes y acompanantes.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h3 class="footer-title">Herkar</h3>
-                    <p style="color: #aaaaaa; font-size: 0.9rem;">Tecnología y confort para su salud.</p>
-                </div>
-                <div>
-                    <h3 class="footer-title">Contacto</h3>
-                    <ul class="footer-links">
-                        <li><a href="{% url 'core:nosotros' %}">Nosotros</a></li>
-                        <li><a href="{% url 'core:instalaciones' %}">Instalaciones</a></li>
-                        <li><a href="#">Aviso de Privacidad</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">&copy; 2024 Herkar. Todos los derechos reservados.</div>
-        </div>
-    </footer>
-
-    <script src="{% static 'js/main.js' %}"></script>
-</body>
-
-</html>
+{% endblock %}

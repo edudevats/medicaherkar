@@ -3,30 +3,63 @@
 <footer class="main-footer">
     <div class="container">
         <div class="footer-grid">
-            <div>
-                <h3 class="footer-title">Clinica HerKar</h3>
-                <p style="color: #aaaaaa; font-size: 0.9rem;">Excelencia medica y calidez humana en cada
-                    procedimiento.</p>
+            <div class="footer-brand">
+                <a href="{% url 'core:gateway' %}?elegir=1" class="logo" style="margin-bottom: 1rem;">
+                    <img src="{% static 'images/logo.jpeg' %}" alt="Servicios Medicos HerKar" style="height: 40px; filter: brightness(1.5);">
+                    <span class="logo-text" style="color: white;">Servicios Medicos <span>HerKar</span></span>
+                </a>
+                <p>Confianza y tecnologia avanzada cerca de ti. Mas de 10 anos brindando excelencia en cirugia de corta estancia.</p>
+                <div class="footer-social">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
             </div>
-            <div>
-                <h3 class="footer-title">Contacto</h3>
-                <ul class="footer-links">
-                    <li>Calle Thiers, Ciudad de Mexico</li>
-                    <li>55 1234 5678</li>
-                    <li>contacto@cthiers.com</li>
-                </ul>
-            </div>
+
             <div>
                 <h3 class="footer-title">Enlaces</h3>
                 <ul class="footer-links">
-                    <li><a href="{% url 'core:nosotros' %}">Nosotros</a></li>
+                    <li><a href="{% url 'core:medicos' %}">Para Medicos</a></li>
+                    <li><a href="{% url 'core:pacientes' %}">Para Pacientes</a></li>
+                    <li><a href="{% url 'core:nosotros' %}">Quienes Somos</a></li>
                     <li><a href="{% url 'core:instalaciones' %}">Instalaciones</a></li>
-                    <li><a href="{% url 'core:contacto' %}">Contacto</a></li>
+                    <li><a href="{% url 'core:especialidades' %}">Especialidades</a></li>
                 </ul>
             </div>
+
+            <div>
+                <h3 class="footer-title">Servicios</h3>
+                <ul class="footer-links">
+                    <li><a href="{% url 'core:medicos' %}#renta">Renta de Quirofanos</a></li>
+                    <li><a href="{% url 'core:medicos' %}#renta">Renta de Consultorios</a></li>
+                    <li><a href="{% url 'core:pacientes' %}#especialidades">Especialidades</a></li>
+                    <li><a href="#">Aviso de Privacidad</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer-title">Contacto</h3>
+                <div class="footer-contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Col. Anzures, Alc. Miguel Hidalgo, CDMX, CP 11590</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>55 1234 5678 / 55 8765 4321</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>55 1234 5678</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>contacto@clinicaherkar.com</span>
+                </div>
+            </div>
         </div>
+
         <div class="copyright">
-            &copy; 2024 Clinica HerKar. Todos los derechos reservados.
+            &copy; 2025 Servicios Medicos HerKar | Todos los derechos reservados. | <a href="#">Aviso de Privacidad</a>
         </div>
     </div>
 </footer>

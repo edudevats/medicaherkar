@@ -1,125 +1,90 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto | Herkar</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
-        rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-</head>
+{% block title %}Contacto | Clinica HerKar{% endblock %}
 
-<body>
+{% block content %}
 
-    {% include 'partials/_header.html' %}
+<!-- Page Banner -->
+<div class="page-banner">
+    <h1>Contacto</h1>
+    <p>Estamos aqui para atenderte</p>
+</div>
 
-    <div style="background: var(--primary-color); padding: 4rem 0; color: white; text-align: center;">
-        <h1 style="color: white; margin: 0;">Contacto</h1>
-    </div>
+<section class="section">
+    <div class="container">
+        <div class="about-grid">
+            <!-- Contact Info -->
+            <div class="about-content">
+                <h2 class="section-title" style="text-align: left;">Pongase en contacto</h2>
+                <p style="margin-bottom: 2rem;">Estamos aqui para atenderle. Si tiene alguna duda o desea agendar
+                    una cita, no dude en escribirnos o llamarnos.</p>
 
-    <section class="section">
-        <div class="container">
-            <div class="about-grid">
-                <!-- Contact Info -->
-                <div class="about-content">
-                    <h2 class="section-title" style="text-align: left; margin-left: 0;">Póngase en contacto</h2>
-                    <p style="margin-bottom: 2rem;">Estamos aquí para atenderle. Si tiene alguna duda o desea agendar
-                        una cita, no dude en escribirnos o llamarnos.</p>
-
-                    <div style="margin-bottom: 2rem;">
-                        <h3 style="color: var(--secondary-color); margin-bottom: 0.5rem;">Ubicación</h3>
-                        <p style="color: var(--text-light);">Calle Thiers #123<br>Colonia Anzures, Alcaldía Miguel
-                            Hidalgo<br>Ciudad de México, CP 11590</p>
-                    </div>
-
-                    <div style="margin-bottom: 2rem;">
-                        <h3 style="color: var(--secondary-color); margin-bottom: 0.5rem;">Teléfonos</h3>
-                        <p style="color: var(--text-light);">
-                            📞 55 1234 5678<br>
-                            📱 55 8765 4321 (WhatsApp)
-                        </p>
-                    </div>
-
+                <div class="contact-info-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                     <div>
-                        <h3 style="color: var(--secondary-color); margin-bottom: 0.5rem;">Horario de Atención</h3>
-                        <p style="color: var(--text-light);">
-                            Lunes a Viernes: 8:00 am - 8:00 pm<br>
-                            Sábados: 9:00 am - 2:00 pm<br>
-                            Urgencias: 24 horas
-                        </p>
+                        <h4>Ubicacion</h4>
+                        <p>Col. Anzures, Alcaldia Miguel Hidalgo<br>Ciudad de Mexico, CP 11590</p>
                     </div>
                 </div>
 
-                <!-- Contact Form -->
-                <div class="about-img-wrapper" style="background: var(--bg-light); padding: 2rem; border-radius: 8px;">
+                <div class="contact-info-item">
+                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div>
+                        <h4>Telefonos</h4>
+                        <p>55 1234 5678<br>55 8765 4321</p>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                    <div>
+                        <h4>WhatsApp</h4>
+                        <p>55 1234 5678</p>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                    <div>
+                        <h4>Horario de Atencion</h4>
+                        <p>Lunes a Viernes: 8:00 am - 8:00 pm<br>Sabados: 9:00 am - 2:00 pm</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div>
+                <div style="background: var(--bg-light); padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-md);">
+                    <h3 style="margin-bottom: 1.5rem; font-size: 1.2rem;">Envianos un mensaje</h3>
                     <form>
                         <div style="margin-bottom: 1rem;">
-                            <label for="name" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Nombre
-                                Completo</label>
-                            <input type="text" id="name"
-                                style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 4px;"
-                                placeholder="Ingrese su nombre">
+                            <input type="text" class="form-control" placeholder="Nombre Completo">
                         </div>
                         <div style="margin-bottom: 1rem;">
-                            <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Correo
-                                Electrónico</label>
-                            <input type="email" id="email"
-                                style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 4px;"
-                                placeholder="ejemplo@correo.com">
+                            <input type="email" class="form-control" placeholder="Correo Electronico">
                         </div>
                         <div style="margin-bottom: 1rem;">
-                            <label for="phone"
-                                style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Teléfono</label>
-                            <input type="tel" id="phone"
-                                style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 4px;"
-                                placeholder="55 1234 5678">
+                            <input type="tel" class="form-control" placeholder="Telefono">
                         </div>
                         <div style="margin-bottom: 1.5rem;">
-                            <label for="message"
-                                style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Mensaje</label>
-                            <textarea id="message" rows="4"
-                                style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 4px;"
-                                placeholder="¿En qué podemos ayudarle?"></textarea>
+                            <textarea class="form-control" placeholder="En que podemos ayudarle?" rows="4"></textarea>
                         </div>
-                        <button type="submit" class="btn" style="width: 100%; border: none; cursor: pointer;">Enviar
-                            Mensaje</button>
+                        <button type="submit" class="btn" style="width: 100%; border: none;">Enviar Mensaje</button>
                     </form>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Map Placeholder -->
-    <section
-        style="height: 400px; background: #eee; display: flex; align-items: center; justify-content: center; color: #888; font-size: 1.5rem;">
-        <p>Mapa de Ubicación (Google Maps Embed)</p>
-    </section>
+<!-- Map Placeholder -->
+<section
+    style="height: 400px; background: var(--bg-dark); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); font-size: 1.2rem;">
+    <div style="text-align: center;">
+        <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);"></i>
+        <p>Mapa de Ubicacion (Google Maps)</p>
+    </div>
+</section>
 
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h3 class="footer-title">Herkar</h3>
-                    <p style="color: #aaaaaa; font-size: 0.9rem;">Su salud en las mejores manos.</p>
-                </div>
-                <div>
-                    <h3 class="footer-title">Contacto</h3>
-                    <ul class="footer-links">
-                        <li><a href="{% url 'core:nosotros' %}">Nosotros</a></li>
-                        <li><a href="{% url 'core:instalaciones' %}">Instalaciones</a></li>
-                        <li><a href="#">Aviso de Privacidad</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">&copy; 2024 Herkar. Todos los derechos reservados.</div>
-        </div>
-    </footer>
-
-    <script src="{% static 'js/main.js' %}"></script>
-</body>
-
-</html>
+{% endblock %}

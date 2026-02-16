@@ -5,11 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Clinica HerKar{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %}Servicios Medicos HerKar{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=3">
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     {% block extra_css %}{% endblock %}
 </head>
 
@@ -19,8 +20,7 @@
     {% if messages %}
     <div class="container" style="margin-top: 1rem;">
         {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}"
-            style="padding: 1rem; margin-bottom: 1rem; border-radius: 8px; background: {% if message.tags == 'success' %}#d4edda{% elif message.tags == 'error' %}#f8d7da{% else %}#cce5ff{% endif %}; color: {% if message.tags == 'success' %}#155724{% elif message.tags == 'error' %}#721c24{% else %}#004085{% endif %};">
+        <div class="alert alert-{{ message.tags }}">
             {{ message }}
         </div>
         {% endfor %}
@@ -31,8 +31,8 @@
 
     {% include 'partials/_footer.html' %}
 
+    <script src="{% static 'js/main.js' %}?v=3"></script>
     {% block extra_js %}{% endblock %}
-    <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>

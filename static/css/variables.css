@@ -1,26 +1,36 @@
 :root {
     /* Colors - Extracted from HerKar Logo */
     --primary-color: #5DBCAA;
-    /* Teal from Logo */
+    /* Teal/Verde from Logo cross and "HER" text */
     --secondary-color: #4AA396;
-    /* Darker Teal for contrast */
+    /* Darker teal for hover states */
     --accent-color: #7BD0C1;
-    /* Lighter Teal */
+    /* Lighter teal for subtle highlights */
+    --dark-color: #4D4D4D;
+    /* Dark grey from logo geometric shapes */
+    --grey-medium: #8C8C8C;
+    /* Medium grey from logo */
     --text-color: #4a4a4a;
-    /* Softer Dark Grey */
-    --text-light: #808080;
-    /* Gray from Logo */
+    /* Softer dark grey for body text */
+    --text-light: #777777;
+    /* Medium grey for secondary text */
     --bg-light: #F0F9F7;
     /* Very faint teal background */
     --bg-white: #ffffff;
+    --bg-dark: #2d2d3d;
+    /* Dark background for sections */
     --border-color: #e0e0e0;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
 
     /* Spacing */
     --container-width: 1200px;
+    --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
     --spacing-lg: 2rem;
     --spacing-xl: 4rem;
+    --spacing-xxl: 6rem;
 
     /* Typography */
     --font-heading: 'Poppins', sans-serif;
@@ -28,4 +38,11 @@
 
     /* Transitions */
     --transition-speed: 0.3s;
+    --transition-slow: 0.5s;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.15);
+    --shadow-hover: 0 8px 30px rgba(93, 188, 170, 0.25);
 }

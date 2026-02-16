@@ -13,8 +13,7 @@ SECRET_KEY = 'django-insecure-&7j$gr&nfzuyy(5a0@r8u7z-z=%jr#j8)5pw0#xijh3fo*!3rz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = ['luslwg-ip-189-131-164-141.tunnelmole.net']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.medicaherkar.com', '127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -115,4 +114,4 @@ AUTH_USER_MODEL = 'users.User'
 # Authentication
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'users:dashboard'
-LOGOUT_REDIRECT_URL = 'core:index'
+LOGOUT_REDIRECT_URL = 'core:gateway'

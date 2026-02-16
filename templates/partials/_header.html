@@ -2,27 +2,80 @@
 <!-- Header -->
 <header class="main-header">
     <div class="container nav-container">
-        <a href="{% url 'core:index' %}" class="logo">Clinica HerKar</a>
+        <a href="{% url 'core:gateway' %}?elegir=1" class="logo">
+            <img src="{% static 'images/logo.jpeg' %}" alt="Servicios Medicos HerKar" class="logo-img">
+            <span class="logo-text">Servicios Medicos <span>HerKar</span></span>
+        </a>
+
         <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
             <i class="fas fa-bars"></i>
         </button>
+
         <nav>
             <ul class="nav-menu">
-                <li><a href="{% url 'core:index' %}" class="nav-link">Inicio</a></li>
+                {% if request.resolver_match.url_name == 'medicos' %}
+                <!-- Navigation for Medical Professionals -->
+                <li><a href="{% url 'core:medicos' %}" class="nav-link">Inicio</a></li>
+                <li class="nav-item-dropdown">
+                    <a href="#nosotros" class="nav-link">Quienes Somos</a>
+                    <div class="dropdown-menu">
+                        <a href="#nosotros">Mision y Vision</a>
+                        <a href="#nosotros">Nuestros Valores</a>
+                    </div>
+                </li>
+                <li><a href="#infraestructura" class="nav-link">Infraestructura</a></li>
+                <li><a href="#porque" class="nav-link">Por que HerKar?</a></li>
+                <li><a href="#renta" class="nav-link">Renta</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                <!-- Role switch: go to patient view -->
+                <li>
+                    <a href="{% url 'core:pacientes' %}" class="role-switch" onclick="setCookieRole('paciente')" title="Cambiar a vista de paciente">
+                        <i class="fas fa-exchange-alt"></i> Soy Paciente
+                    </a>
+                </li>
+                {% elif request.resolver_match.url_name == 'pacientes' %}
+                <!-- Navigation for Patients -->
+                <li><a href="{% url 'core:pacientes' %}" class="nav-link">Inicio</a></li>
+                <li><a href="#derechos" class="nav-link">Atencion al Paciente</a></li>
+                <li><a href="#especialidades" class="nav-link">Especialidades</a></li>
+                <li><a href="#instalaciones" class="nav-link">Instalaciones</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                <!-- Role switch: go to doctor view -->
+                <li>
+                    <a href="{% url 'core:medicos' %}" class="role-switch" onclick="setCookieRole('medico')" title="Cambiar a vista de medico">
+                        <i class="fas fa-exchange-alt"></i> Soy Medico
+                    </a>
+                </li>
+                {% else %}
+                <!-- Default Navigation -->
+                <li><a href="{% url 'core:gateway' %}" class="nav-link">Inicio</a></li>
                 <li><a href="{% url 'core:nosotros' %}" class="nav-link">Nosotros</a></li>
                 <li><a href="{% url 'core:instalaciones' %}" class="nav-link">Instalaciones</a></li>
                 <li><a href="{% url 'core:especialidades' %}" class="nav-link">Especialidades</a></li>
                 <li><a href="{% url 'core:contacto' %}" class="nav-link">Contacto</a></li>
+                {% endif %}
 
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'users:dashboard' %}" class="nav-link">Mi Panel</a></li>
+                <li><a href="{% url 'users:dashboard' %}" class="nav-link btn-login">Mi Panel</a></li>
                 <li><a href="{% url 'users:logout' %}" class="nav-link">Salir</a></li>
                 {% else %}
                 <li><a href="{% url 'users:login' %}" class="nav-link">Iniciar Sesion</a></li>
-                <li><a href="{% url 'users:registro' %}" class="btn"
-                        style="padding: 0.5rem 1rem; font-size: 0.9rem;">Registrarse</a></li>
+                <li><a href="{% url 'users:registro' %}" class="nav-link btn-login">Registrarse</a></li>
                 {% endif %}
             </ul>
+
+            <div class="nav-contact">
+                <a href="https://wa.me/5551234567" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="tel:5512345678" title="Llamar"><i class="fas fa-phone-alt"></i></a>
+            </div>
         </nav>
     </div>
 </header>
+
+<script>
+function setCookieRole(role) {
+    var d = new Date();
+    d.setTime(d.getTime() + (90 * 24 * 60 * 60 * 1000));
+    document.cookie = 'herkar_role=' + role + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+}
+</script>

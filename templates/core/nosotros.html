@@ -1,96 +1,93 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nosotros | Herkar</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
-        rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-</head>
+{% block title %}Quienes Somos | Clinica HerKar{% endblock %}
 
-<body>
+{% block content %}
 
-    {% include 'partials/_header.html' %}
+<!-- Page Banner -->
+<div class="page-banner">
+    <h1>Quienes Somos</h1>
+    <p>Confianza y tecnologia avanzada cerca de ti</p>
+</div>
 
-    <div style="background: var(--primary-color); padding: 4rem 0; color: white; text-align: center;">
-        <h1 style="color: white; margin: 0;">Quiénes Somos</h1>
+<!-- Mission & Values -->
+<section class="section">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-content">
+                <h2 class="section-title" style="text-align: left;">Nuestra Mision</h2>
+                <p>En Clinica HerKar, nuestra mision es proporcionar servicios medicos y quirurgicos de corta
+                    estancia con los mas altos estandares de calidad, seguridad y etica profesional.</p>
+                <p>Nos dedicamos a cuidar la salud de nuestros pacientes a traves de una atencion personalizada y
+                    humana, respaldada por tecnologia de vanguardia y un equipo medico de excelencia.</p>
+
+                <h3 style="margin-top: 2rem; font-size: 1.1rem;">Nuestra Vision</h3>
+                <p>Liderar el reconocimiento en el sector salud por nuestra excelencia, calidez y compromiso con el bienestar de pacientes y medicos.</p>
+            </div>
+            <div class="about-img-wrapper">
+                <img src="{% static 'images/clinic_exterior.png' %}" alt="Clinica HerKar" class="about-img">
+            </div>
+        </div>
     </div>
+</section>
 
-    <section class="section">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-content">
-                    <h2 class="section-title" style="text-align: left; margin-left: 0;">Nuestra Misión</h2>
-                    <p>En Herkar, nuestra misión es proporcionar servicios médicos y quirúrgicos de corta
-                        estancia con los más altos estándares de calidad, seguridad y ética profesional.</p>
-                    <p>Nos dedicamos a cuidar la salud de nuestros pacientes a través de una atención personalizada y
-                        humana, respaldada por tecnología de vanguardia y un equipo médico de excelencia.</p>
-
-                    <h3 style="margin-top: 2rem;">Nuestros Valores</h3>
-                    <ul style="list-style: none; color: var(--text-light);">
-                        <li style="margin-bottom: 0.5rem;">🔹 <strong>Ética:</strong> Actuamos siempre con integridad y
-                            transparencia.</li>
-                        <li style="margin-bottom: 0.5rem;">🔹 <strong>Seguridad:</strong> La integridad del paciente es
-                            nuestra prioridad absoluta.</li>
-                        <li style="margin-bottom: 0.5rem;">🔹 <strong>Calidez:</strong> Trato humano y empático en todo
-                            momento.</li>
-                        <li style="margin-bottom: 0.5rem;">🔹 <strong>Innovación:</strong> Mejora continua en nuestros
-                            procesos y equipos.</li>
-                    </ul>
-                </div>
-                <div class="about-img-wrapper">
-                    <img src="{% static 'images/clinic_exterior.png' %}" alt="Clínica HerKar" class="about-img">
-                </div>
+<!-- Values -->
+<section class="section section-bg">
+    <div class="container">
+        <h2 class="section-title">Nuestros Valores</h2>
+        <div class="values-grid">
+            <div class="value-item">
+                <div class="value-icon"><i class="fas fa-award"></i></div>
+                <h4>Calidad</h4>
+                <p>Estandares superiores en cada servicio que ofrecemos</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+                <h4>Seguridad</h4>
+                <p>La integridad del paciente es nuestra prioridad absoluta</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon"><i class="fas fa-balance-scale"></i></div>
+                <h4>Etica Medica</h4>
+                <p>Actuamos siempre con integridad y transparencia</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon"><i class="fas fa-hands-helping"></i></div>
+                <h4>Responsabilidad</h4>
+                <p>Compromiso con cada profesional y paciente</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon"><i class="fas fa-chart-line"></i></div>
+                <h4>Mejora Continua</h4>
+                <p>Innovacion constante en nuestros procesos y equipos</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="section section-bg" style="text-align: center;">
-        <div class="container">
-            <h2 class="section-title">¿Por qué elegirnos?</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3 class="service-title">+10 Años de Experiencia</h3>
-                    <p class="service-desc">Una década dedicados a la excelencia en cirugía ambulatoria.</p>
-                </div>
-                <div class="service-card">
-                    <h3 class="service-title">Ubicación Privilegiada</h3>
-                    <p class="service-desc">Fácil acceso en una de las mejores zonas de la ciudad.</p>
-                </div>
-                <div class="service-card">
-                    <h3 class="service-title">Precios Competitivos</h3>
-                    <p class="service-desc">Calidad hospitalaria a costos accesibles.</p>
-                </div>
+<!-- Why Choose Us -->
+<section class="section" style="text-align: center;">
+    <div class="container">
+        <h2 class="section-title">Por que elegirnos?</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-calendar-check"></i></div>
+                <h3 class="service-title">+10 Anos de Experiencia</h3>
+                <p class="service-desc">Una decada dedicados a la excelencia en cirugia ambulatoria.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <h3 class="service-title">Ubicacion Privilegiada</h3>
+                <p class="service-desc">Facil acceso en una de las mejores zonas de la ciudad.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-tags"></i></div>
+                <h3 class="service-title">Precios Competitivos</h3>
+                <p class="service-desc">Calidad hospitalaria a costos accesibles.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h3 class="footer-title">Herkar</h3>
-                    <p style="color: #aaaaaa; font-size: 0.9rem;">Excelencia médica y calidez humana.</p>
-                </div>
-                <div>
-                    <h3 class="footer-title">Contacto</h3>
-                    <ul class="footer-links">
-                        <li><a href="{% url 'core:nosotros' %}">Nosotros</a></li>
-                        <li><a href="{% url 'core:instalaciones' %}">Instalaciones</a></li>
-                        <li><a href="#">Aviso de Privacidad</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">&copy; 2024 Herkar. Todos los derechos reservados.</div>
-        </div>
-    </footer>
-
-    <script src="{% static 'js/main.js' %}"></script>
-</body>
-
-</html>
+{% endblock %}

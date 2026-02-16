@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios Medicos HerKar | Confianza y Tecnologia Avanzada</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=3">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <script>
+        // Check for saved role cookie and auto-redirect
+        (function() {
+            // Don't redirect if user explicitly came back to choose (has ?choose=1 in URL)
+            var urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('elegir') === '1') return;
+
+            var role = getCookie('herkar_role');
+            if (role === 'medico') {
+                window.location.replace('{% url "core:medicos" %}');
+            } else if (role === 'paciente') {
+                window.location.replace('{% url "core:pacientes" %}');
+            }
+        })();
+
+        function getCookie(name) {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var c = cookies[i].trim();
+                if (c.indexOf(name + '=') === 0) {
+                    return c.substring(name.length + 1);
+                }
+            }
+            return null;
+        }
+
+        function setCookie(name, value, days) {
+            var d = new Date();
+            d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = name + '=' + value + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+        }
+
+        function clearRoleCookie() {
+            document.cookie = 'herkar_role=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;SameSite=Lax';
+            // Remove URL parameter and reload
+            window.location.href = window.location.pathname;
+        }
+
+        function selectRole(role, url) {
+            setCookie('herkar_role', role, 90); // 90 days
+            window.location.href = url;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="gateway-page">
+        <div class="gateway-content">
+            <div class="gateway-logo">
+                <img src="{% static 'images/logo.jpeg' %}" alt="Servicios Medicos HerKar">
+                <div class="gateway-logo-text">Servicios Medicos <span>HerKar</span></div>
+            </div>
+            <p class="gateway-tagline">Confianza y tecnologia avanzada cerca de ti</p>
+
+            <div class="gateway-options">
+                <a href="javascript:void(0)" onclick="selectRole('medico', '{% url 'core:medicos' %}')" class="gateway-card">
+                    <div class="gateway-card-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Soy Profesional de la Salud</h3>
+                    <p>Renta de quirofanos, consultorios y servicios de apoyo para profesionales medicos.</p>
+                </a>
+
+                <a href="javascript:void(0)" onclick="selectRole('paciente', '{% url 'core:pacientes' %}')" class="gateway-card">
+                    <div class="gateway-card-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Busco Atencion Medica</h3>
+                    <p>Especialidades medicas, cirugias de corta estancia y atencion personalizada.</p>
+                </a>
+            </div>
+
+            <!-- Show message if returning visitor explicitly chose to change role -->
+            <div class="gateway-returning" id="returningNotice" style="display: none;">
+                <p><i class="fas fa-info-circle"></i> Tu seleccion sera recordada para futuras visitas.</p>
+                <button class="btn-clear-cookie" onclick="clearRoleCookie()">Borrar preferencia guardada</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show returning notice if user has ?elegir=1
+        (function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('elegir') === '1') {
+                var notice = document.getElementById('returningNotice');
+                if (notice) notice.style.display = 'block';
+            }
+        })();
+    </script>
+</body>
+
+</html>
