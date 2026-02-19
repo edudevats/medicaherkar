@@ -29,13 +29,13 @@
             </div>
 
             <div class="about-img-wrapper" style="background: var(--bg-light); padding: 2rem; border-radius: 8px;">
-                <h3 style="margin-bottom: 1rem;">Proximas funcionalidades</h3>
-                <ul style="color: var(--text-light); line-height: 2;">
-                    <li>Ver mis pacientes asignados</li>
-                    <li>Consultar citas programadas</li>
-                    <li>Historial de procedimientos</li>
-                    <li>Generar reportes medicos</li>
-                </ul>
+                <h3 style="margin-bottom: 1rem;">Gestion de Citas</h3>
+                <p style="margin-bottom: 1.5rem;">Revisa tus proximas consultas y el historial de tus pacientes.</p>
+
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="{% url 'citas:mis_citas' %}" class="btn" style="width: 100%; text-align: center;">Ver Mis
+                        Citas</a>
+                </div>
             </div>
         </div>
     </div>

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Mis Citas | Clinica HerKar{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Mis Citas</h2>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        {% if user.es_medico %}
+                        <th>Paciente</th>
+                        {% else %}
+                        <th>Medico</th>
+                        {% endif %}
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cita in citas %}
+                    <tr>
+                        <td>
+                            {% if user.es_medico %}
+                            {{ cita.paciente.get_full_name }}
+                            {% else %}
+                            Dr. {{ cita.medico.get_full_name }}
+                            {% endif %}
+                        </td>
+                        <td>{{ cita.fecha_cita|date:"d/m/Y H:i" }}</td>
+                        <td>
+                            <span class="badge badge-{{ cita.estado }}">
+                                {{ cita.get_estado_display }}
+                            </span>
+                        </td>
+                        <td>
+                            <a href="{% url 'citas:detalle_cita' cita.id %}" class="btn-sm">Ver Detalles</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="text-center">No tienes citas programadas.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% if user.es_paciente %}
+        <div class="mt-4">
+            <a href="{% url 'citas:lista_medicos' %}" class="btn">Nueva Cita</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

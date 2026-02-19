@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle de Cita | Clinica HerKar{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Detalle de la Cita</h2>
+        <div class="card">
+            <div class="card-body">
+                <h3>Informacion General</h3>
+                <p><strong>Estado:</strong> {{ cita.get_estado_display }}</p>
+                <p><strong>Fecha y Hora:</strong> {{ cita.fecha_cita|date:"d/m/Y H:i" }}</p>
+
+                {% if user.es_medico %}
+                <p><strong>Paciente:</strong> {{ cita.paciente.get_full_name }}</p>
+                <p><strong>Email:</strong> {{ cita.paciente.email }}</p>
+                <p><strong>Telefono:</strong> {{ cita.paciente.telefono }}</p>
+                {% else %}
+                <p><strong>Medico:</strong> Dr. {{ cita.medico.get_full_name }}</p>
+                <p><strong>Especialidad:</strong> {{ cita.medico.perfil_medico.especialidad }}</p>
+                {% endif %}
+
+                <hr>
+
+                <h3>Motivo de la Consulta</h3>
+                <p>{{ cita.motivo }}</p>
+
+                {% if cita.notas_medico %}
+                <hr>
+                <h3>Notas del Medico</h3>
+                <p>{{ cita.notas_medico }}</p>
+                {% endif %}
+
+                <div class="mt-4">
+                    <a href="{% url 'citas:mis_citas' %}" class="btn">Volver a mis citas</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

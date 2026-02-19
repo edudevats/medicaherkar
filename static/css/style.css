@@ -79,7 +79,7 @@ img {
 
 .gateway-logo-text {
     font-family: var(--font-heading);
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
     font-weight: 700;
     color: var(--dark-color);
     letter-spacing: 3px;
@@ -197,6 +197,7 @@ img {
     align-items: center;
     padding: var(--spacing-sm) 0;
     flex-wrap: nowrap;
+    gap: var(--spacing-md);
 }
 
 nav {
@@ -227,7 +228,7 @@ nav {
 }
 
 .logo-text {
-    font-size: 1.4rem;
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
     font-weight: 700;
     color: var(--dark-color);
     text-transform: uppercase;
@@ -300,6 +301,10 @@ nav {
     margin-left: var(--spacing-md);
 }
 
+.nav-contact-mobile {
+    display: none;
+}
+
 .nav-contact a {
     width: 36px;
     height: 36px;
@@ -351,21 +356,22 @@ nav {
     .nav-menu {
         position: fixed;
         top: 65px;
-        left: 0;
-        right: 0;
+        left: 100%;
+        width: 100%;
+        height: calc(100vh - 65px);
         background: var(--bg-white);
         flex-direction: column;
         text-align: center;
         padding: 2rem;
         gap: 0.5rem;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        transform: translateY(-150%);
-        transition: transform 0.3s ease-in-out;
+        box-shadow: -5px 0 10px rgba(0, 0, 0, 0.05);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 999;
+        overflow-y: auto;
     }
 
     .nav-menu.active {
-        transform: translateY(0);
+        transform: translateX(-100%);
     }
 
     .mobile-nav-toggle {
@@ -379,9 +385,16 @@ nav {
     }
 
     .nav-contact {
+        display: none;
+    }
+
+    .nav-menu .nav-contact-mobile {
+        display: flex;
         justify-content: center;
-        margin-left: 0;
-        margin-top: var(--spacing-sm);
+        gap: var(--spacing-md);
+        margin-top: var(--spacing-lg);
+        padding-top: var(--spacing-lg);
+        border-top: 1px solid var(--border-color);
     }
 
     .nav-item-dropdown .dropdown-menu {
@@ -438,7 +451,7 @@ nav {
 }
 
 .hero-title {
-    font-size: 3.2rem;
+    font-size: clamp(2rem, 8vw, 3.2rem);
     margin-bottom: var(--spacing-md);
     color: white;
     font-weight: 700;
@@ -555,7 +568,7 @@ nav {
 
 .section-title {
     text-align: center;
-    font-size: 2.2rem;
+    font-size: clamp(1.7rem, 5vw, 2.2rem);
     margin-bottom: var(--spacing-md);
     position: relative;
     color: var(--dark-color);
@@ -591,7 +604,7 @@ nav {
    ============================================ */
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: var(--spacing-xl);
     align-items: center;
 }
@@ -1042,7 +1055,16 @@ nav {
     box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
     z-index: 999;
     transition: all var(--transition-speed);
-    animation: whatsapp-pulse 2s infinite;
+}
+
+@media (max-width: 768px) {
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
 }
 
 .whatsapp-float:hover {
@@ -1111,7 +1133,7 @@ nav {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: var(--spacing-xl);
     margin-bottom: var(--spacing-xl);
 }
@@ -1457,8 +1479,9 @@ select.form-control {
         direction: ltr !important;
     }
 
-    .about-grid[style*="direction: rtl"] .about-content {
-        direction: ltr !important;
+    .about-img-wrapper {
+        order: -1;
+        margin-bottom: var(--spacing-lg);
     }
 
     .section-title {
@@ -1514,6 +1537,10 @@ select.form-control {
 
     .rental-grid {
         grid-template-columns: 1fr;
+    }
+
+    .section-title::after {
+        width: 40px;
     }
 }
 

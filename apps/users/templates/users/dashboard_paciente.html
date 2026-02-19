@@ -19,29 +19,30 @@
                     <p><strong>Nombre:</strong> {{ user.get_full_name }}</p>
                     <p><strong>Email:</strong> {{ user.email }}</p>
                     <p><strong>Telefono:</strong> {{ user.telefono|default:"No especificado" }}</p>
-                    <p><strong>Fecha de nacimiento:</strong> {{ user.fecha_nacimiento|date:"d/m/Y"|default:"No especificada" }}</p>
+                    <p><strong>Fecha de nacimiento:</strong> {{ user.fecha_nacimiento|date:"d/m/Y"|default:"No
+                        especificada" }}</p>
                     {% if user.perfil_paciente %}
-                    <p><strong>Tipo de sangre:</strong> {{ user.perfil_paciente.tipo_sangre|default:"No especificado" }}</p>
+                    <p><strong>Tipo de sangre:</strong> {{ user.perfil_paciente.tipo_sangre|default:"No especificado" }}
+                    </p>
                     {% endif %}
                 </div>
 
                 <div style="display: flex; gap: 1rem;">
                     <a href="{% url 'users:perfil' %}" class="btn">Ver Perfil Completo</a>
-                    <a href="{% url 'users:editar_perfil' %}" class="btn" style="background: var(--secondary-color);">Editar Perfil</a>
+                    <a href="{% url 'users:editar_perfil' %}" class="btn"
+                        style="background: var(--secondary-color);">Editar Perfil</a>
                 </div>
             </div>
 
             <div class="about-img-wrapper" style="background: var(--bg-light); padding: 2rem; border-radius: 8px;">
-                <h3 style="margin-bottom: 1rem;">Proximas funcionalidades</h3>
-                <ul style="color: var(--text-light); line-height: 2;">
-                    <li>Agendar citas</li>
-                    <li>Ver historial de consultas</li>
-                    <li>Descargar resultados</li>
-                    <li>Contactar a mi medico</li>
-                </ul>
+                <h3 style="margin-bottom: 1rem;">Gestion de Citas</h3>
+                <p style="margin-bottom: 1.5rem;">Conecta con nuestros medicos especialistas y agenda tu consulta.</p>
 
-                <div style="margin-top: 2rem;">
-                    <a href="{% url 'core:contacto' %}" class="btn">Agendar Cita</a>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="{% url 'citas:lista_medicos' %}" class="btn"
+                        style="width: 100%; text-align: center;">Buscar Medico / Agendar Cita</a>
+                    <a href="{% url 'citas:mis_citas' %}" class="btn"
+                        style="background: var(--secondary-color); width: 100%; text-align: center;">Ver Mis Citas</a>
                 </div>
             </div>
         </div>

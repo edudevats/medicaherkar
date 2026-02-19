@@ -67,6 +67,14 @@
             <p class="gateway-tagline">Confianza y tecnologia avanzada cerca de ti</p>
 
             <div class="gateway-options">
+                <a href="javascript:void(0)" onclick="selectRole('paciente', '{% url 'core:pacientes' %}')" class="gateway-card">
+                    <div class="gateway-card-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Busco Atencion Medica</h3>
+                    <p>Especialidades medicas, cirugias de corta estancia y atencion personalizada.</p>
+                </a>
+
                 <a href="javascript:void(0)" onclick="selectRole('medico', '{% url 'core:medicos' %}')" class="gateway-card">
                     <div class="gateway-card-icon">
                         <i class="fas fa-user-md"></i>
@@ -75,13 +83,6 @@
                     <p>Renta de quirofanos, consultorios y servicios de apoyo para profesionales medicos.</p>
                 </a>
 
-                <a href="javascript:void(0)" onclick="selectRole('paciente', '{% url 'core:pacientes' %}')" class="gateway-card">
-                    <div class="gateway-card-icon">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <h3>Busco Atencion Medica</h3>
-                    <p>Especialidades medicas, cirugias de corta estancia y atencion personalizada.</p>
-                </a>
             </div>
 
             <!-- Show message if returning visitor explicitly chose to change role -->

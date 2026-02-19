@@ -2,7 +2,8 @@
 <!-- Header -->
 <header class="main-header">
     <div class="container nav-container">
-        <a href="{% url 'core:gateway' %}?elegir=1" class="logo">
+        <a href="{% if request.resolver_match.url_name == 'medicos' %}{% url 'core:medicos' %}{% elif request.resolver_match.url_name == 'pacientes' %}{% url 'core:pacientes' %}{% else %}{% url 'core:gateway' %}{% endif %}"
+            class="logo">
             <img src="{% static 'images/logo.jpeg' %}" alt="Servicios Medicos HerKar" class="logo-img">
             <span class="logo-text">Servicios Medicos <span>HerKar</span></span>
         </a>
@@ -29,7 +30,8 @@
                 <li><a href="#contacto" class="nav-link">Contacto</a></li>
                 <!-- Role switch: go to patient view -->
                 <li>
-                    <a href="{% url 'core:pacientes' %}" class="role-switch" onclick="setCookieRole('paciente')" title="Cambiar a vista de paciente">
+                    <a href="{% url 'core:pacientes' %}" class="role-switch" onclick="setCookieRole('paciente')"
+                        title="Cambiar a vista de paciente">
                         <i class="fas fa-exchange-alt"></i> Soy Paciente
                     </a>
                 </li>
@@ -42,7 +44,8 @@
                 <li><a href="#contacto" class="nav-link">Contacto</a></li>
                 <!-- Role switch: go to doctor view -->
                 <li>
-                    <a href="{% url 'core:medicos' %}" class="role-switch" onclick="setCookieRole('medico')" title="Cambiar a vista de medico">
+                    <a href="{% url 'core:medicos' %}" class="role-switch" onclick="setCookieRole('medico')"
+                        title="Cambiar a vista de medico">
                         <i class="fas fa-exchange-alt"></i> Soy Medico
                     </a>
                 </li>
@@ -56,26 +59,34 @@
                 {% endif %}
 
                 {% if user.is_authenticated %}
+                <li><a href="{% url 'citas:mis_citas' %}" class="nav-link">Mis Citas</a></li>
                 <li><a href="{% url 'users:dashboard' %}" class="nav-link btn-login">Mi Panel</a></li>
                 <li><a href="{% url 'users:logout' %}" class="nav-link">Salir</a></li>
                 {% else %}
                 <li><a href="{% url 'users:login' %}" class="nav-link">Iniciar Sesion</a></li>
                 <li><a href="{% url 'users:registro' %}" class="nav-link btn-login">Registrarse</a></li>
                 {% endif %}
+
+                <!-- Mobile Contact Icons (Visible only on small screens) -->
+                <li class="nav-contact-mobile">
+                    <a href="https://wa.me/5613330166" target="_blank" title="WhatsApp"><i
+                            class="fab fa-whatsapp"></i></a>
+                    <a href="tel:5613330166" title="Llamar"><i class="fas fa-phone-alt"></i></a>
+                </li>
             </ul>
 
             <div class="nav-contact">
-                <a href="https://wa.me/5551234567" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                <a href="tel:5512345678" title="Llamar"><i class="fas fa-phone-alt"></i></a>
+                <a href="https://wa.me/5613330166" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="tel:5613330166" title="Llamar"><i class="fas fa-phone-alt"></i></a>
             </div>
         </nav>
     </div>
 </header>
 
 <script>
-function setCookieRole(role) {
-    var d = new Date();
-    d.setTime(d.getTime() + (90 * 24 * 60 * 60 * 1000));
-    document.cookie = 'herkar_role=' + role + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
-}
+    function setCookieRole(role) {
+        var d = new Date();
+        d.setTime(d.getTime() + (90 * 24 * 60 * 60 * 1000));
+        document.cookie = 'herkar_role=' + role + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+    }
 </script>

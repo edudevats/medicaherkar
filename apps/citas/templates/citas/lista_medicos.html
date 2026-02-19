@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Medicos Disponibles | Clinica HerKar{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Nuestros Medicos</h2>
+        <div class="doctors-grid">
+            {% for medico in medicos %}
+            <div class="card">
+                <div class="card-body">
+                    <h3>Dr. {{ medico.get_full_name }}</h3>
+                    <p><strong>Especialidad:</strong> {{ medico.perfil_medico.especialidad }}</p>
+                    <p>{{ medico.perfil_medico.descripcion|truncatewords:20 }}</p>
+                    <a href="{% url 'citas:solicitar_cita' medico.id %}" class="btn">Solicitar Cita</a>
+                </div>
+            </div>
+            {% empty %}
+            <p>No hay medicos disponibles en este momento.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
