@@ -38,6 +38,13 @@
                 {% elif request.resolver_match.url_name == 'pacientes' %}
                 <!-- Navigation for Patients -->
                 <li><a href="{% url 'core:pacientes' %}" class="nav-link">Inicio</a></li>
+                <li class="nav-item-dropdown">
+                    <a href="#nosotros" class="nav-link">Conócenos</a>
+                    <div class="dropdown-menu">
+                        <a href="#nosotros">Visión y Misión</a>
+                        <a href="#nosotros">Nuestros Valores</a>
+                    </div>
+                </li>
                 <li><a href="#derechos" class="nav-link">Atencion al Paciente</a></li>
                 <li><a href="#especialidades" class="nav-link">Especialidades</a></li>
                 <li><a href="{% url 'especialistas:lista' %}" class="nav-link">Especialistas</a></li>

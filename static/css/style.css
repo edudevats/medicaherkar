@@ -195,7 +195,7 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--spacing-sm) 0;
+    padding: var(--spacing-sm) var(--spacing-md);
     flex-wrap: nowrap;
     gap: var(--spacing-md);
 }
@@ -224,7 +224,7 @@ nav {
 }
 
 .logo-img {
-    height: 45px;
+    height: clamp(35px, 10vw, 45px);
 }
 
 .logo-text {
@@ -352,13 +352,13 @@ nav {
 }
 
 /* Mobile Menu Styles */
-@media (max-width: 992px) {
+@media (max-width: 1100px) {
     .nav-menu {
-        position: fixed;
-        top: 65px;
+        position: absolute;
+        top: 100%;
         left: 100%;
         width: 100%;
-        height: calc(100vh - 65px);
+        height: calc(100vh - 70px);
         background: var(--bg-white);
         flex-direction: column;
         text-align: center;
