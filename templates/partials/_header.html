@@ -4,8 +4,8 @@
     <div class="container nav-container">
         <a href="{% if request.resolver_match.url_name == 'medicos' %}{% url 'core:medicos' %}{% elif request.resolver_match.url_name == 'pacientes' %}{% url 'core:pacientes' %}{% else %}{% url 'core:gateway' %}{% endif %}"
             class="logo">
-            <img src="{% static 'images/logo.jpeg' %}" alt="Servicios Medicos HerKar" class="logo-img">
-            <span class="logo-text">Servicios Medicos <span>HerKar</span></span>
+            <img src="{% static 'images/logo.jpeg' %}" alt="HerKar" class="logo-img">
+            <span class="logo-text">HerKar</span>
         </a>
 
         <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
@@ -18,21 +18,21 @@
                 <!-- Navigation for Medical Professionals -->
                 <li><a href="{% url 'core:medicos' %}" class="nav-link">Inicio</a></li>
                 <li class="nav-item-dropdown">
-                    <a href="#nosotros" class="nav-link">Quienes Somos</a>
+                    <a href="#nosotros" class="nav-link">Conócenos</a>
                     <div class="dropdown-menu">
-                        <a href="#nosotros">Mision y Vision</a>
+                        <a href="#nosotros">Visión y Misión</a>
                         <a href="#nosotros">Nuestros Valores</a>
                     </div>
                 </li>
                 <li><a href="#infraestructura" class="nav-link">Infraestructura</a></li>
-                <li><a href="#porque" class="nav-link">Por que HerKar?</a></li>
+                <li><a href="#porque" class="nav-link">¿Por qué Elegirnos?</a></li>
                 <li><a href="#renta" class="nav-link">Renta</a></li>
                 <li><a href="#contacto" class="nav-link">Contacto</a></li>
                 <!-- Role switch: go to patient view -->
                 <li>
                     <a href="{% url 'core:pacientes' %}" class="role-switch" onclick="setCookieRole('paciente')"
                         title="Cambiar a vista de paciente">
-                        <i class="fas fa-exchange-alt"></i> Soy Paciente
+                        <i class="fas fa-exchange-alt"></i> Acceso Pacientes
                     </a>
                 </li>
                 {% elif request.resolver_match.url_name == 'pacientes' %}
@@ -40,31 +40,33 @@
                 <li><a href="{% url 'core:pacientes' %}" class="nav-link">Inicio</a></li>
                 <li><a href="#derechos" class="nav-link">Atencion al Paciente</a></li>
                 <li><a href="#especialidades" class="nav-link">Especialidades</a></li>
+                <li><a href="{% url 'especialistas:lista' %}" class="nav-link">Especialistas</a></li>
                 <li><a href="#instalaciones" class="nav-link">Instalaciones</a></li>
                 <li><a href="#contacto" class="nav-link">Contacto</a></li>
                 <!-- Role switch: go to doctor view -->
                 <li>
                     <a href="{% url 'core:medicos' %}" class="role-switch" onclick="setCookieRole('medico')"
                         title="Cambiar a vista de medico">
-                        <i class="fas fa-exchange-alt"></i> Soy Medico
+                        <i class="fas fa-exchange-alt"></i> Acceso Médicos
                     </a>
                 </li>
                 {% else %}
                 <!-- Default Navigation -->
                 <li><a href="{% url 'core:gateway' %}" class="nav-link">Inicio</a></li>
-                <li><a href="{% url 'core:nosotros' %}" class="nav-link">Nosotros</a></li>
+                <li><a href="{% url 'core:nosotros' %}" class="nav-link">Conócenos</a></li>
                 <li><a href="{% url 'core:instalaciones' %}" class="nav-link">Instalaciones</a></li>
                 <li><a href="{% url 'core:especialidades' %}" class="nav-link">Especialidades</a></li>
-                <li><a href="{% url 'core:contacto' %}" class="nav-link">Contacto</a></li>
+                <li><a href="{% url 'especialistas:lista' %}" class="nav-link">Especialistas</a></li>
+                <li><a href="{% url 'core:contacto' %}" class="nav-link">Contáctanos</a></li>
                 {% endif %}
 
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'citas:mis_citas' %}" class="nav-link">Mis Citas</a></li>
                 <li><a href="{% url 'users:dashboard' %}" class="nav-link btn-login">Mi Panel</a></li>
-                <li><a href="{% url 'users:logout' %}" class="nav-link">Salir</a></li>
+                <li><a href="{% url 'users:logout' %}" class="nav-link">Cerrar Sesión</a></li>
                 {% else %}
-                <li><a href="{% url 'users:login' %}" class="nav-link">Iniciar Sesion</a></li>
-                <li><a href="{% url 'users:registro' %}" class="nav-link btn-login">Registrarse</a></li>
+                <li><a href="{% url 'users:login' %}" class="nav-link">Acceder</a></li>
+                <li><a href="{% url 'users:registro' %}" class="nav-link btn-login">Crear Cuenta</a></li>
                 {% endif %}
 
                 <!-- Mobile Contact Icons (Visible only on small screens) -->

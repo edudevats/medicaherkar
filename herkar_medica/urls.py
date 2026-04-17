@@ -8,6 +8,7 @@ urlpatterns = [
     path('', include('apps.core.urls')),
     path('usuarios/', include('apps.users.urls')),
     path('citas/', include('apps.citas.urls')),
+    path('especialistas/', include('apps.especialistas.urls')),
 ]
 
 if settings.DEBUG:

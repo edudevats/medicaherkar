@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios Medicos HerKar | Confianza y Tecnologia Avanzada</title>
+    <title>HerKar | Bienestar y Vanguardia Médica</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}?v=3">
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&display=swap"
@@ -14,7 +14,7 @@
 
     <script>
         // Check for saved role cookie and auto-redirect
-        (function() {
+        (function () {
             // Don't redirect if user explicitly came back to choose (has ?choose=1 in URL)
             var urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('elegir') === '1') return;
@@ -61,26 +61,28 @@
     <div class="gateway-page">
         <div class="gateway-content">
             <div class="gateway-logo">
-                <img src="{% static 'images/logo.jpeg' %}" alt="Servicios Medicos HerKar">
-                <div class="gateway-logo-text">Servicios Medicos <span>HerKar</span></div>
+                <img src="{% static 'images/logo.jpeg' %}" alt="HerKar">
+                <div class="gateway-logo-text">HerKar</div>
             </div>
-            <p class="gateway-tagline">Confianza y tecnologia avanzada cerca de ti</p>
+            <p class="gateway-tagline">Tu salud en manos expertas con tecnología de punta</p>
 
             <div class="gateway-options">
-                <a href="javascript:void(0)" onclick="selectRole('paciente', '{% url 'core:pacientes' %}')" class="gateway-card">
+                <a href="javascript:void(0)" onclick="selectRole('paciente', '{% url 'core:pacientes' %}')"
+                    class="gateway-card">
                     <div class="gateway-card-icon">
                         <i class="fas fa-user"></i>
                     </div>
-                    <h3>Busco Atencion Medica</h3>
-                    <p>Especialidades medicas, cirugias de corta estancia y atencion personalizada.</p>
+                    <h3>Atención a Pacientes</h3>
+                    <p>Servicios médicos integrales, procedimientos ambulatorios y acompañamiento humano.</p>
                 </a>
 
-                <a href="javascript:void(0)" onclick="selectRole('medico', '{% url 'core:medicos' %}')" class="gateway-card">
+                <a href="javascript:void(0)" onclick="selectRole('medico', '{% url 'core:medicos' %}')"
+                    class="gateway-card">
                     <div class="gateway-card-icon">
                         <i class="fas fa-user-md"></i>
                     </div>
-                    <h3>Soy Profesional de la Salud</h3>
-                    <p>Renta de quirofanos, consultorios y servicios de apoyo para profesionales medicos.</p>
+                    <h3>Para Especialistas Médicos</h3>
+                    <p>Alquiler de espacios quirúrgicos, consultorios premium y respaldo profesional continuo.</p>
                 </a>
 
             </div>
@@ -95,7 +97,7 @@
 
     <script>
         // Show returning notice if user has ?elegir=1
-        (function() {
+        (function () {
             var urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('elegir') === '1') {
                 var notice = document.getElementById('returningNotice');

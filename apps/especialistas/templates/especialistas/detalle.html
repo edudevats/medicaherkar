@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ especialista.nombre }} | Medica HerKar{% endblock %}
+
+{% block content %}
+
+<section class="especialista-hero">
+    <div class="container especialista-hero-inner">
+        <div class="especialista-hero-foto-wrapper">
+            {% if especialista.foto %}
+            <img src="{{ especialista.foto.url }}"
+                 alt="{{ especialista.nombre }}"
+                 class="especialista-hero-foto">
+            {% else %}
+            <div class="especialista-hero-foto-placeholder">
+                <i class="fas fa-user-md"></i>
+            </div>
+            {% endif %}
+        </div>
+        <div class="especialista-hero-info">
+            <h1 class="especialista-hero-nombre">{{ especialista.nombre }}</h1>
+            <div class="especialista-hero-cedulas">
+                <p><strong>Cédula Profesional:</strong> {{ especialista.cedula_profesional }}</p>
+                {% if especialista.cedula_especialidad %}
+                <p><strong>Cédula de Especialidad:</strong> {{ especialista.cedula_especialidad }}</p>
+                {% endif %}
+                {% if especialista.cmcper %}
+                <p><strong>CMCPER:</strong> {{ especialista.cmcper }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="especialista-bio">
+            <h2 class="section-title" style="text-align:left;">Acerca del Doctor</h2>
+            {{ especialista.biografia|linebreaks }}
+        </div>
+
+        <div class="especialista-info-grid">
+            {% if especialista.universidad or especialista.hospital_especialidad %}
+            <div class="especialista-info-chip">
+                <i class="fas fa-graduation-cap especialista-info-chip-icon"></i>
+                <div>
+                    <strong>Formación</strong>
+                    {% if especialista.universidad %}
+                    <p>{{ especialista.universidad }}</p>
+                    {% endif %}
+                    {% if especialista.hospital_especialidad %}
+                    <p>{{ especialista.hospital_especialidad }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if especialista.anios_experiencia %}
+            <div class="especialista-info-chip">
+                <i class="fas fa-briefcase especialista-info-chip-icon"></i>
+                <div>
+                    <strong>Experiencia</strong>
+                    <p>{{ especialista.anios_experiencia }} años</p>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if especialista.areas_interes %}
+            <div class="especialista-info-chip especialista-info-chip--wide">
+                <i class="fas fa-stethoscope especialista-info-chip-icon"></i>
+                <div>
+                    <strong>Áreas de interés</strong>
+                    <ul class="especialista-areas-list">
+                        {% for area in especialista.areas_interes_list %}
+                        <li>{{ area }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        {% if especialista.especialidades.all %}
+        <div class="especialista-especialidades">
+            <h3>Especialidades</h3>
+            <div class="especialista-badges">
+                {% for esp in especialista.especialidades.all %}
+                <span class="especialidad-badge">
+                    {% if esp.icono %}<i class="{{ esp.icono }}"></i> {% endif %}
+                    {{ esp.nombre }}
+                </span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="especialista-cta">
+            <a href="{% url 'citas:lista_medicos' %}" class="btn">
+                <i class="fas fa-calendar-check"></i> Agendar cita
+            </a>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

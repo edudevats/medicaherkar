@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Especialistas | Medica HerKar{% endblock %}
+
+{% block content %}
+
+<div class="page-banner">
+    <h1>Nuestros Especialistas</h1>
+    <p>Médicos altamente calificados comprometidos con tu salud</p>
+</div>
+
+<section class="section">
+    <div class="container">
+        {% if especialistas %}
+        <div class="especialistas-grid">
+            {% for especialista in especialistas %}
+            <a href="{{ especialista.get_absolute_url }}" class="especialista-card">
+                <div class="especialista-card-foto-wrapper">
+                    {% if especialista.foto %}
+                    <img src="{{ especialista.foto.url }}"
+                         alt="{{ especialista.nombre }}"
+                         class="especialista-card-foto">
+                    {% else %}
+                    <div class="especialista-card-foto-placeholder">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="especialista-card-body">
+                    <h3 class="especialista-card-nombre">{{ especialista.nombre }}</h3>
+                    <div class="especialista-badges">
+                        {% for esp in especialista.especialidades.all %}
+                        <span class="especialidad-badge">{{ esp.nombre }}</span>
+                        {% endfor %}
+                    </div>
+                    <span class="especialista-card-cta">
+                        Ver perfil <i class="fas fa-arrow-right"></i>
+                    </span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="especialistas-empty">
+            Próximamente publicaremos el directorio de nuestros especialistas.
+        </p>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

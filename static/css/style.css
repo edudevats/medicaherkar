@@ -1558,3 +1558,293 @@ select.form-control {
         flex-direction: column;
     }
 }
+
+/* ============================================
+   ESPECIALISTAS — LISTA
+   ============================================ */
+.especialistas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.especialista-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--bg-white);
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-lg);
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: box-shadow var(--transition-speed), transform var(--transition-speed);
+}
+
+.especialista-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
+}
+
+.especialista-card-foto-wrapper {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--primary-color);
+    margin-bottom: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.especialista-card-foto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.especialista-card-foto-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-light);
+    color: var(--primary-color);
+    font-size: 2.5rem;
+}
+
+.especialista-card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    width: 100%;
+}
+
+.especialista-card-nombre {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 0;
+}
+
+.especialista-card-cta {
+    margin-top: auto;
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding-top: var(--spacing-sm);
+}
+
+.especialista-card-cta i {
+    transition: transform var(--transition-speed);
+}
+
+.especialista-card:hover .especialista-card-cta i {
+    transform: translateX(4px);
+}
+
+.especialistas-empty {
+    text-align: center;
+    color: var(--text-light);
+    padding: var(--spacing-xl) 0;
+}
+
+/* ============================================
+   ESPECIALISTAS — BADGES (compartido lista/detalle)
+   ============================================ */
+.especialista-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    justify-content: center;
+}
+
+.especialidad-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: var(--bg-light);
+    color: var(--primary-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 999px;
+    padding: 0.2rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* ============================================
+   ESPECIALISTAS — HERO (detalle)
+   ============================================ */
+.especialista-hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    padding: var(--spacing-xl) 0;
+}
+
+.especialista-hero-inner {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+}
+
+.especialista-hero-foto-wrapper {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgba(255, 255, 255, 0.6);
+    flex-shrink: 0;
+}
+
+.especialista-hero-foto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.especialista-hero-foto-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 4rem;
+}
+
+.especialista-hero-info {
+    color: #fff;
+}
+
+.especialista-hero-nombre {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: var(--spacing-md);
+}
+
+.especialista-hero-cedulas p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.3rem;
+}
+
+.especialista-hero-cedulas strong {
+    color: #fff;
+}
+
+/* ============================================
+   ESPECIALISTAS — CUERPO (detalle)
+   ============================================ */
+.especialista-bio {
+    margin-bottom: var(--spacing-xl);
+}
+
+.especialista-bio p {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-color);
+}
+
+.especialista-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.especialista-info-chip {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    background: var(--bg-light);
+    border-radius: 12px;
+    padding: var(--spacing-md);
+}
+
+.especialista-info-chip--wide {
+    grid-column: 1 / -1;
+}
+
+.especialista-info-chip-icon {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+}
+
+.especialista-info-chip strong {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--primary-color);
+    margin-bottom: 0.3rem;
+}
+
+.especialista-info-chip p {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 0.15rem;
+}
+
+.especialista-areas-list {
+    list-style: disc;
+    padding-left: 1.2rem;
+    margin: 0;
+}
+
+.especialista-areas-list li {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+}
+
+.especialista-especialidades {
+    margin-bottom: var(--spacing-xl);
+}
+
+.especialista-especialidades h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+.especialista-especialidades .especialista-badges {
+    justify-content: flex-start;
+}
+
+.especialista-cta {
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+    border-top: 1px solid var(--border-color);
+}
+
+/* ============================================
+   ESPECIALISTAS — RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .especialista-hero-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .especialista-hero-cedulas {
+        text-align: center;
+    }
+
+    .especialista-info-chip--wide {
+        grid-column: auto;
+    }
+
+    .especialista-especialidades .especialista-badges {
+        justify-content: center;
+    }
+}

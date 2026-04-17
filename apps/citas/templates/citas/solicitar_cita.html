@@ -6,22 +6,22 @@
 <section class="section">
     <div class="container">
         <div class="form-container">
-            <h2 class="section-title">Solicitar Cita con Dr. {{ medico.get_full_name }}</h2>
+            <h2 class="section-title">Agendar Consulta con el Dr. {{ medico.get_full_name }}</h2>
             <form method="post">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="{{ form.fecha_cita.id_for_label }}">Fecha y Hora Deseada</label>
+                    <label for="{{ form.fecha_cita.id_for_label }}">Selecciona Fecha y Hora</label>
                     {{ form.fecha_cita }}
                     {{ form.fecha_cita.errors }}
                 </div>
                 <div class="form-group">
-                    <label for="{{ form.motivo.id_for_label }}">Motivo de la Consulta</label>
+                    <label for="{{ form.motivo.id_for_label }}">Razón de la Visita Médica</label>
                     {{ form.motivo }}
                     {{ form.motivo.errors }}
                 </div>
                 <div class="form-actions">
-                    <button type="submit" class="btn">Enviar Solicitud</button>
-                    <a href="{% url 'citas:lista_medicos' %}" class="btn btn-secondary">Cancelar</a>
+                    <button type="submit" class="btn">Confirmar Cita</button>
+                    <a href="{% url 'citas:lista_medicos' %}" class="btn btn-secondary">Volver</a>
                 </div>
             </form>
         </div>
